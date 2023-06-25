@@ -1,0 +1,533 @@
+% layout 'default', tab => '/OpenRI/about';
+% title 'OpenRI - Providing the info';
+
+% content_for css => begin
+	<style>
+		.jumbotron1 {
+			padding-top: 40px;
+			padding-bottom: 20px;
+			margin: 0 0 0px 0;
+			/* background-image: url("/app/img/dcGO.jumbotron.png"); */
+			background-repeat: space;
+			background-color: rgba(250,250,250,0.2);
+			border-color: rgba(250,250,250,0.2);
+		}
+		
+	</style>
+% end
+
+
+% content_for scripts => begin
+
+% end
+
+<div class="jumbotron1">
+
+	<div class="text-center">
+		<h3><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;ABOUT RESOURCE&nbsp;&nbsp;</h3>
+	</div>
+    
+</div>
+
+<!-- results -->
+<div id="results-container" class="container collapse in">
+	
+	<div class="panel-group" id="accordion">
+		
+	   <!-- panel 1 -->
+	   <div class="panel panel-default" id="panel1">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark1">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+				   <i class="fa fa-minus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Overview describing the development and deplotment of the OpenRI database">&nbsp;&nbsp;ABOUT</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse1" class="panel-collapse collapse in">
+			 <div class = "panel-body">
+				
+				<fieldset>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;OpenRI is an open and scalable resource for gene-directed regulatory interactions. It enables interactive exploration of multimodal regulatory interactions, organised into three modals: Activity-By-Contact (ABC) for enhancer-gene maps, Promoter Capture Hi-C (PCHiC), and Quantitative Trait Loci (QTL). OpenRI also provides users with data-mining opportunities inclusive of non-coding genome, including: 
+				<ul>
+				<li><a href="/OpenRI" target="search"><i class="fa fa-search fa-1x"></i>&nbsp;Search</a>, an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages; 
+				<li><a href="/OpenRI/browser" target="browser"><i class="fa fa-safari fa-1x fa-flip-horizontal"></i>&nbsp;Browse</a>, enabling interactive exploration of regulatory interactions through navigating contexts;
+				<li><a href="/OpenRI/RI2Genes" target="RI2Genes"><i class="fa fa-tachometer fa-1x fa-flip-horizontal"></i>&nbsp;RI2Genes</a>, mining the resource to identify regulatory genes from user-input data.
+				<li><a href="/OpenRI/RI2Terms" target="RI2Terms"><i class="fa fa-tachometer fa-1x"></i>&nbsp;RI2Terms</a>, mining the resource to identify regulatory genes and ontology terms from user-input data.
+				</ul>
+				</h5>
+				</fieldset>
+				
+				<br>
+				
+				<fieldset>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please refer to <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource. For instructions on how to build its web-server, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a>. Looking further ahead, we are keen on providing outputs in a ChatGPT-style conversational manner.</h5>
+				</fieldset>
+				
+				<br>
+				
+			 </div>
+		  </div>
+	   </div>
+	
+	   <!-- panel 2 -->
+	   <div class="panel panel-default" id="panel2">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark2">
+				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Download the MySQL relational database, along with documentation detailing the use, table schema and release versions">&nbsp;&nbsp;MYSQL</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse2" class="panel-collapse collapse">
+			 <div class = "panel-body">
+			 
+				<h4><a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a><span class="sandy_text">&nbsp;&nbsp;<i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;contains 4 tables, with the schema outlined below:</span></h4>
+				
+				<hr>
+				
+<table cellspacing='0' cellpadding='0' width=98%>
+<tr>
+<td align=center><IMG src="/app/img/OpenRIdb_schema_202306.png" name="schema" align="bottom" width="300" border="0" id="schema" class="img_responsive">
+</td>
+</tr>
+<tr>
+<td align=center>
+<P class="text_center">
+<I><B></B></I></P>
+</td>
+</tr>
+</table>
+
+<hr>
+				
+<div class="tabber" id="sandy_tab">
+    
+    
+    <div class="tabbertab tabbertabdefault">
+    <h2><a>USE</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Restore the OpenRI MySQL database</span>
+    <pre class="citation_title">
+# Enter password if prompted
+mysql -u root -p -e "create database OpenRIdb;"
+gunzip < OpenRIdb_202306.sql.gz | mysql -u root -p OpenRIdb
+    </pre>
+    
+    <hr>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Show tables</span>
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">USE</span> OpenRIdb;
+mysql> <span class="burgundy_text">SHOW</span> tables;
++--------------------+
+| Tables_in_openridb |
++--------------------+
+| context_info       |
+| gene_info          |
+| gr_info            |
+| ri                 |
++--------------------+
+    </pre>
+	
+	<hr>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Extract genomic regions that interact with the gene 'IL17A' (based on the modal 'PCHiC')</span>
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">SELECT</span> a.CID, b.label, a.GR, a.Gene, a.Score 
+<span class="burgundy_text">FROM</span> ri AS a, context_info AS b 
+<span class="burgundy_text">WHERE</span> a.CID=b.CID AND b.Modal='PCHiC' AND a.Gene='IL17A'
+<span class="burgundy_text">ORDER BY</span> a.Score DESC;
++-------+-----------------------------------------------+------------------------+-------+----------+
+| CID   | label                                         | GR                     | Gene  | Score    |
++-------+-----------------------------------------------+------------------------+-------+----------+
+| C0081 | Aorta (PMID31501517)                          | chr6:50715234-50721151 | IL17A | 0.107967 |
+| C0088 | Fat (PMID31501517)                            | chr6:52021964-52028582 | IL17A | 0.107136 |
+| C0080 | AdrenalGland (PMID31501517)                   | chr6:50138944-50145136 | IL17A | 0.106664 |
+| C0126 | hippocampal (PMID31367015)                    | chr6:52107437-52120696 | IL17A | 0.105868 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52121367-52124792 | IL17A | 0.105148 |
+| C0112 | Pancreas (PMID31501517)                       | chr6:52028583-52033567 | IL17A | 0.105094 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52874476-52880638 | IL17A | 0.104419 |
+| C0081 | Aorta (PMID31501517)                          | chr6:51983487-51987113 | IL17A | 0.103885 |
+| C0112 | Pancreas (PMID31501517)                       | chr6:51976923-51980357 | IL17A | 0.102618 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52507448-52510680 | IL17A | 0.101935 |
+| C0082 | Bladder (PMID31501517)                        | chr6:52097457-52102314 | IL17A | 0.101872 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:51930792-51937411 | IL17A | 0.101258 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A |  0.10104 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52548793-52551154 | IL17A | 0.100978 |
+| C0097 | LCL (PMID31501517)                            | chr6:50706937-50711709 | IL17A | 0.100911 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52527279-52528288 | IL17A |  0.10082 |
+| C0111 | Ovary (PMID31501517)                          | chr6:52097457-52102314 | IL17A |  0.10081 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A | 0.100758 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A | 0.100661 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52564858-52565095 | IL17A | 0.100646 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52529945-52533082 | IL17A | 0.100577 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52565096-52568603 | IL17A | 0.100483 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50770604-50780906 | IL17A | 0.100481 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50796768-50800786 | IL17A | 0.100452 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52483390-52486722 | IL17A | 0.100446 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:51998371-52001727 | IL17A |  0.10042 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100405 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52168413-52176918 | IL17A | 0.100397 |
+| C0099 | Liver (PMID31501517)                          | chr6:51365528-51370740 | IL17A | 0.100377 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52564858-52565095 | IL17A | 0.100365 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A | 0.100328 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A | 0.100303 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52557253-52561729 | IL17A | 0.100272 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52564858-52565095 | IL17A | 0.100265 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100223 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52506678-52507447 | IL17A | 0.100212 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50766439-50770603 | IL17A | 0.100157 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A |  0.10015 |
+| C0127 | motor (PMID31367015)                          | chr6:52120697-52122033 | IL17A | 0.100142 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52583876-52584149 | IL17A |  0.10012 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100092 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52474654-52478765 | IL17A | 0.100061 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52608673-52609968 | IL17A | 0.100047 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52537239-52538716 | IL17A | 0.100034 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52565096-52568603 | IL17A | 0.100026 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A | 0.100022 |
++-------+-----------------------------------------------+------------------------+-------+----------+
+    </pre>
+    </div>
+    
+    
+    <div class="tabbertab">
+    <h2><a>context_info</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about contexts</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_context_info.txt.gz" download="Table_context_info.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_context_info.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> context_info;
++----------+---------------------------+------+-----+---------+-------+
+| Field    | Type                      | Null | Key | Default | Extra |
++----------+---------------------------+------+-----+---------+-------+
+| CID      | varchar(5)                | NO   | UNI | NULL    |       |
+| Modal    | enum('ABC','PCHiC','QTL') | NO   | PRI | NULL    |       |
+| Context  | varchar(100)              | NO   | PRI | NULL    |       |
+| num      | int unsigned              | NO   |     | 0       |       |
+| num_gene | int unsigned              | NO   |     | 0       |       |
+| label    | varchar(100)              | NO   | MUL | NULL    |       |
+| pmid     | int unsigned              | NO   |     | 0       |       |
++----------+---------------------------+------+-----+---------+-------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
+     <li> The <span style="text-decoration: underline;">Modal</span> column is the modal for regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">Context</span> column is the name of contexts</li>
+     <li> The <span style="text-decoration: underline;">num</span> column is the number of regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">num_gene</span> column is the number of genes</li>
+     <li> The <span style="text-decoration: underline;">label</span> column is the human-friendly description of contexts</li>
+     <li> The <span style="text-decoration: underline;">pmid</span> column is PubMed ID for this published dataset</li>
+    </ul>
+    </font>
+    </div>
+
+
+    <div class="tabbertab">
+    <h2><a>gene_info</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about human genes</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_gene_info.txt.gz" download="Table_gene_info.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_gene_info.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> gene_info;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| Gene        | varchar(100) | NO   | PRI | NULL    |                |
+| GeneID      | int unsigned | NO   |     | 0       |                |
+| GeneLoc     | varchar(50)  | NO   |     | NULL    |                |
+| GeneLen     | int unsigned | NO   |     | 0       |                |
+| Description | varchar(255) | NO   |     | NULL    |                |
+| chr         | int unsigned | NO   |     | 0       |                |
+| start       | int unsigned | NO   |     | 0       |                |
+| end         | int unsigned | NO   |     | 0       |                |
+| auto        | int          | NO   | UNI | NULL    | auto_increment |
++-------------+--------------+------+-----+---------+----------------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">Gene</span> column is the official gene symbol</li>
+     <li> The <span style="text-decoration: underline;">GeneID</span> column is the NCBI Gene ID</li>
+     <li> The <span style="text-decoration: underline;">GeneLoc</span> column is the genomic location (derived from UCSC known genes)</li>
+     <li> The <span style="text-decoration: underline;">GeneLen</span> column is the gene length (calculated based on GeneLoc)</li>
+     <li> The <span style="text-decoration: underline;">Description</span> column is the official gene description</li>
+     <li> The <span style="text-decoration: underline;">chr</span> column is the chromosome (23 for X and 24 for Y)</li>
+     <li> The <span style="text-decoration: underline;">start</span> column is the start coordinate of GeneLoc</li>
+     <li> The <span style="text-decoration: underline;">end</span> column is the end coordinate of GeneLoc</li>
+     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
+    </ul>
+    </font>
+    </div>
+
+    
+    <div class="tabbertab">
+    <h2><a>gr_info</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about genomic regions</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_gr_info.txt.gz" download="Table_gr_info.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_gr_info.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> gr_info;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| GR    | varchar(50)  | NO   | PRI | NULL    |                |
+| GRlen | int unsigned | NO   |     | 0       |                |
+| chr   | int unsigned | NO   |     | 0       |                |
+| start | int unsigned | NO   |     | 0       |                |
+| end   | int unsigned | NO   |     | 0       |                |
+| auto  | int          | NO   | UNI | NULL    | auto_increment |
++-------+--------------+------+-----+---------+----------------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
+     <li> The <span style="text-decoration: underline;">GRlen</span> column is the genomic region length (calculated based on GR)</li>
+     <li> The <span style="text-decoration: underline;">chr</span> column is the chromosome (23 for X and 24 for Y)</li>
+     <li> The <span style="text-decoration: underline;">start</span> column is the start coordinate of GR</li>
+     <li> The <span style="text-decoration: underline;">end</span> column is the end coordinate of GR</li>
+     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
+    </ul>
+    </font>
+    </div>
+
+
+    <div class="tabbertab">
+    <h2><a>ri</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about regulatory interactions</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_ri.txt.gz" download="Table_ri.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_ri.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> ri;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| CID      | varchar(5)   | NO   | PRI | NULL    |                |
+| GR       | varchar(50)  | NO   | PRI | NULL    |                |
+| Gene     | varchar(100) | NO   | PRI | NULL    |                |
+| Score    | double       | YES  |     | NULL    |                |
+| Distance | int          | YES  |     | NULL    |                |
+| auto     | int          | NO   | UNI | NULL    | auto_increment |
++----------+--------------+------+-----+---------+----------------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
+     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
+     <li> The <span style="text-decoration: underline;">Gene</span> column is the official gene symbol</li>
+     <li> The <span style="text-decoration: underline;">Score</span> column is the score for regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">Distance</span> column is the distance between GR and Gene</li>
+     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
+    </ul>
+    </font>
+    </div>
+
+    
+    <div class="tabbertab">
+    <h2><a>VERSIONS</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;June 2023 release</span>
+    &nbsp;&nbsp;
+	<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a>
+	
+	<hr>
+    
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;April 2023 release</span>
+    &nbsp;&nbsp;
+	<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202304.sql.gz" download="OpenRIdb_202304.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202304.sql.gz</a>
+    
+    </div>
+    
+</div>
+				
+				
+			 </div>
+		  </div>
+	   </div>
+	   
+	   <!-- panel 3 -->
+	   <div class="panel panel-default" id="panel3">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark3">
+				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="List of funds supporting the development and deployment of the OpenRI database">&nbsp;&nbsp;FUNDING</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse3" class="panel-collapse collapse">
+			<ul>
+	
+			<fieldset>
+				<h5 class="citation_title"><strong>National Natural Science Foundation of China:</strong> 32170663</h5>
+				<p>2022 - 2025</p>
+			</fieldset>
+	
+			<fieldset>
+				<h5 class="citation_title"><strong>Innovative Research Team of High-Level Local Universities in Shanghai</strong></h5>
+				<p>2022 - 2024</p>
+			</fieldset>
+	
+			<fieldset>
+				<h5 class="citation_title"><strong>Program for Professor of Special Appointment at Shanghai Institutions of Higher Learning:</strong> Eastern Scholar</h5>
+				<p>2020 - 2022</p>
+			</fieldset>
+			
+			<!--
+			<fieldset>
+				<h5 class="citation_title"><strong>BBSRC Tools and Resources Development Fund:</strong> BB/L018543/1</h5>
+				<p>2014 - 2015</p>
+			</fieldset>
+			-->
+			
+			<br>
+			</ul>
+		  </div>
+	   </div>
+	  
+	   <!-- panel 4 -->
+	   <div class="panel panel-default" id="panel4">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark4">
+				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Publications for primary datasets curated into the OpenRI database">&nbsp;&nbsp;KEY ARTICLES</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse4" class="panel-collapse collapse">
+			<ul>
+	
+			<fieldset>
+			<h5 class="citation_title">Genome-wide enhancer maps link risk variants to disease genes</h5>
+			<p><em>Nature</em> 2021</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41586-021-03446-x" target="10.1038/s41586-021-03446-x">10.1038/s41586-021-03446-x</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41586-021-03446-x" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">A compendium of uniformly processed human gene expression and splicing quantitative trait loci</h5>
+			<p><em>Nature Genetics</em> 2021</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41588-021-00924-w" target="10.1038/s41588-021-00924-w">10.1038/s41588-021-00924-w</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41588-021-00924-w" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">Large-scale cis- and trans-eQTL analyses identify thousands of genetic loci and polygenic scores that regulate blood gene expression</h5>
+			<p><em>Nature Genetics</em> 2021</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41588-021-00913-z" target="10.1038/s41588-021-00913-z">10.1038/s41588-021-00913-z</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41588-021-00913-z" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">Large-scale integration of the plasma proteome with genetics and disease</h5>
+			<p><em>Nature Genetics</em> 2021</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41588-021-00978-w" target="10.1038/s41588-021-00978-w">10.1038/s41588-021-00978-w</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41588-021-00978-w" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">The GTEx Consortium atlas of genetic regulatory effects across human tissues</h5>
+			<p><em>Science</em> 2020</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1101/787903" target="10.1101/787903">10.1038/s41588-021-00978-w</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1101/787903" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">A genetics-led approach defines the drug target landscape of 30 immune-related traits</h5>
+			<p><em>Nature Genetics</em> 2019</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41588-019-0456-1" target="10.1038/s41588-019-0456-1">10.1038/s41588-019-0456-1</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41588-019-0456-1" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">A compendium of promoter-centered long-range chromatin interactions in the human genome</h5>
+			<p><em>Nature Genetics</em> 2019</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1038/s41588-019-0494-8" target="10.1038/s41588-019-0494-8">10.1038/s41588-019-0494-8</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1038/s41588-019-0494-8" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">Impact of genetic polymorphisms on human immune cell gene expression</h5>
+			<p><em>Cell</em> 2018</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1016/j.cell.2018.10.022" target="10.1016/j.cell.2018.10.022">10.1016/j.cell.2018.10.022</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1016/j.cell.2018.10.022" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">Lineage-Specific Genome Architecture Links Enhancers and Non-coding Disease Variants to Target Gene Promoters</h5>
+			<p><em>Cell</em> 2016</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1016/j.cell.2016.09.037" target="10.1016/j.cell.2016.09.037">10.1016/j.cell.2016.09.037</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1016/j.cell.2016.09.037" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			</ul>
+		  </div>
+	   </div>
+	   
+	   <!-- panel 5 -->
+	   <div class="panel panel-default" id="panel5">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark5">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+				   <i class="fa fa-plus-circle"></i><strong>&nbsp;&nbsp;CONTACT INFO</strong></a>
+			 </h4>
+		  </div>
+		  <div id="collapse5" class="panel-collapse collapse">
+
+		  	<br>
+		  	
+		  	<ul>
+		  	
+	<!-- Content Row -->
+    <div class="row">
+    
+        <!-- Contact Details Column -->
+        <div class="col-md-4">
+        	<p><strong>Hai FANG</strong>, PhD</p>
+            <p><i class="fa fa-minus"></i>&nbsp;&nbsp;Professor of Bioinformatics</p>
+            <p><i class="fa fa-minus"></i>&nbsp;&nbsp;<a href="mailto:fh12355@rjh.com.cn">fh12355@rjh.com.cn</a></p>
+            <p><i class="fa fa-minus"></i>&nbsp;&nbsp;<a href="https://scholar.google.com/citations?hl=en&user=4-78doUAAAAJ&view_op=list_works&authuser=1" target="scholar">Google Scholar</a></p>
+            <p><i class="fa fa-minus"></i>&nbsp;&nbsp;Shanghai Institute of Hematology, State Key Laboratory of Medical Genomics, National Research Center for Translational Medicine at Shanghai, Ruijin Hospital, Shanghai Jiao Tong University School of Medicine, Shanghai 200025, China</p>
+            <br>
+        </div>
+        
+    	<!-- Map Column -->
+        <div class="col-md-8">
+        	<!-- Embedded Google Map -->
+<table cellspacing='0' cellpadding='0' width=100%>
+<tr>
+<td align=center><IMG src="/app/img/OpenRI.contact.png" class="img_responsive">
+</td>
+</tr>
+<tr>
+<td align=center>
+<P class="text_center">
+<I><B></B></I></P>
+</td>
+</tr>
+</table>
+        </div>
+
+    </div>
+    <!-- /.row -->
+			
+			</ul>
+			
+		  </div>
+	   </div>
+	   
+	</div>
+
+</div>
+
+

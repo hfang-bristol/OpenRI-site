@@ -1,0 +1,524 @@
+% layout 'default', tab => '/OpenRI/gene';
+% title 'OpenRI - Regulatory interactions per gene';
+
+% content_for css => begin
+	
+	<style>
+		thead > tr > th {
+			font-size: 14px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			background-color: rgba(204,204,204,0.15);
+			border: 1px solid rgba(204,204,204,0.5);
+		}
+		
+		thead > tr > th.my_style {
+			font-size: 14px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			background-color: rgba(204,204,204,0.3);
+			border: 1px solid rgba(204,204,204,0.5);
+		}
+		
+		tbody > tr > td {
+			font-size: 13px;
+			text-align: left;
+			border: 1px solid #ccc;
+		}
+		tbody > tr > td:first-child {
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		tbody > tr > td:nth-child(2) {
+			text-align: left;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		tbody > tr > td:nth-last-child(1) {
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		
+		tbody > tr > td:hover {
+			-moz-box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+			-webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+			box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+		}
+
+		tfoot > tr > th {
+			font-size: 11px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.1);
+			background-color: transparent;
+		}
+		
+		.jumbotron1 {
+			padding-top: 40px;
+			padding-bottom: 20px;
+			margin: 0 0 0px 0;
+			/* background-image: url("/app/img/dcGO.jumbotron.png"); */
+			background-repeat: space;
+			background-color: rgba(250,250,250,0.2);
+			border-color: rgba(250,250,250,0.2);
+		}
+		
+	</style>
+% end
+
+% content_for scripts => begin
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			/////////////////////////////////////////
+			% if($rec_anno_abc ne ''){
+				// menu1_table
+				var table1 = $('#menu1_table').DataTable({
+					"aaData": <%== $rec_anno_abc %>,
+					"deferRender": true,
+					"lengthMenu": [[5,10,50,-1], [5,10,50,"All"]],
+					"aoColumns": [
+						{
+							mData:"gene",
+							bSearchable: false,
+							asSorting: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},					
+						{
+							mData:"cid",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<strong>' + data + '</strong>';
+							}
+						},
+						{
+							mData:"cmodal",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"clabel",
+							bSearchable: true,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"gr",
+							bSearchable: false,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"score",
+							bSearchable: false,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+					],
+					// Hidden columns
+					"columnDefs": [
+						{
+							"targets": [0],
+							"sortable": false,
+						},
+					],
+					"order": [[5,"desc"], [3,"asc"]],
+					dom: 'Brtlp',
+					buttons: [
+						'copy',
+						'excel',
+						'pdf',
+					],
+
+				});
+				// javascript for menu1_table
+				$('[id^=menu1_table] thead tr th').addClass('rotate');
+				$('[id^=menu1_table] tbody').on('mouseover', 'td', function(){
+					$(this).closest('tr').css("background-color", "rgba(249,178,51,0.2)");
+				});
+				$('[id^=menu1_table] tbody').on('mouseout', 'tr', function(){
+					$(this).css("background-color", "transparent");
+				});
+				$('#mysearch1').on('keyup', function() {
+					table1.search(this.value).draw();
+				});
+			% }
+			
+			/////////////////////////////////////////
+			% if($rec_anno_pchic ne ''){
+				// menu2_table
+				var table1 = $('#menu2_table').DataTable({
+					"aaData": <%== $rec_anno_pchic %>,
+					"deferRender": true,
+					"lengthMenu": [[5,10,50,-1], [5,10,50,"All"]],
+					"aoColumns": [
+						{
+							mData:"gene",
+							bSearchable: false,
+							asSorting: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},					
+						{
+							mData:"cid",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<strong>' + data + '</strong>';
+							}
+						},
+						{
+							mData:"cmodal",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"clabel",
+							bSearchable: true,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"gr",
+							bSearchable: false,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"score",
+							bSearchable: false,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+					],
+					// Hidden columns
+					"columnDefs": [
+						{
+							"targets": [0],
+							"sortable": false,
+						},
+					],
+					"order": [[5,"desc"], [3,"asc"]],
+					dom: 'Brtlp',
+					buttons: [
+						'copy',
+						'excel',
+						'pdf',
+					],
+
+				});
+				// javascript for menu2_table
+				$('[id^=menu2_table] thead tr th').addClass('rotate');
+				$('[id^=menu2_table] tbody').on('mouseover', 'td', function(){
+					$(this).closest('tr').css("background-color", "rgba(249,178,51,0.2)");
+				});
+				$('[id^=menu2_table] tbody').on('mouseout', 'tr', function(){
+					$(this).css("background-color", "transparent");
+				});
+				$('#mysearch2').on('keyup', function() {
+					table1.search(this.value).draw();
+				});
+			% }
+			
+			/////////////////////////////////////////
+			% if($rec_anno_qtl ne ''){
+				// menu3_table
+				var table1 = $('#menu3_table').DataTable({
+					"aaData": <%== $rec_anno_qtl %>,
+					"deferRender": true,
+					"lengthMenu": [[5,10,50,-1], [5,10,50,"All"]],
+					"aoColumns": [
+						{
+							mData:"gene",
+							bSearchable: false,
+							asSorting: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},					
+						{
+							mData:"cid",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<strong>' + data + '</strong>';
+							}
+						},
+						{
+							mData:"cmodal",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"clabel",
+							bSearchable: true,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"gr",
+							bSearchable: false,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"score",
+							bSearchable: false,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+					],
+					// Hidden columns
+					"columnDefs": [
+						{
+							"targets": [0],
+							"sortable": false,
+						},
+					],
+					"order": [[5,"desc"], [3,"asc"]],
+					dom: 'Brtlp',
+					buttons: [
+						'copy',
+						'excel',
+						'pdf',
+					],
+
+				});
+				// javascript for menu3_table
+				$('[id^=menu3_table] thead tr th').addClass('rotate');
+				$('[id^=menu3_table] tbody').on('mouseover', 'td', function(){
+					$(this).closest('tr').css("background-color", "rgba(249,178,51,0.2)");
+				});
+				$('[id^=menu3_table] tbody').on('mouseout', 'tr', function(){
+					$(this).css("background-color", "transparent");
+				});
+				$('#mysearch3').on('keyup', function() {
+					table1.search(this.value).draw();
+				});
+			% }
+			
+		});
+	</script>
+% end
+
+
+<%
+
+%>
+
+
+<div class="container">
+	<div class="jumbotron1"> 
+		
+		<div class="text-right">
+			<a href="javascript:newWin('/OpenRIbooklet/mining---browse.html', 'OpenRIbooklet', '909', '1169')"><span class="fa fa-book fa-lg fa-flip-horizontal"></span>&nbsp;User Manual</a>&nbsp;&nbsp;&nbsp;
+		</div>
+		
+		<div class="text-center">
+			<h3><i class="fa fa-glide fa-lg"></i>&nbsp;&nbsp;<%== $gene %></h3>
+		</div>
+		
+	</div>
+</div>
+
+<!-- results -->
+<div id="results-container" class="container collapse in">
+	
+	% if($gene_data ne ''){
+    <div class="panel panel-primary"">
+        <div class="panel-heading">
+            <h3 class="panel-title" id="bookmark_general"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Gene information</strong></h3>
+        </div>
+        <div class="panel-body">
+			<dl>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Symbol</dt>
+				<dd><%== $gene_data->{Gene} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Description </dt>
+				<dd><%== $gene_data->{Description} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;GeneID</dt>
+				<dd><%== $gene_data->{GeneID} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Genomic location</dt>
+				<dd><%== $gene_data->{GeneLoc} %></dd>
+				
+			</dl>
+        </div>
+    </div>
+	% }
+	
+	
+	<!-- tables -->
+	% if($rec_anno_abc ne ''){
+	<div class="panel-group" id="accordion">
+	
+	   % if($rec_anno_abc ne ''){
+	   <!-- panel 1 -->
+	   <div class="panel panel-default" id="panel1">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark1">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'ABC'">Regulatory interactions (ABC)</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse1" class="panel-collapse collapse">
+			 <div class = "panel-body">
+				<form role="form" id="filter-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Please enter a keyword searching for contexts (eg fibroblast)" id="mysearch1">
+					</div>
+				</form>
+				
+				<table id="menu1_table" class="compact nowrap" cellpadding="5px" cellspacing="0" width="100%">
+					<thead>
+
+						<tr>
+							<th rowspan="2"></th>
+							<th colspan="4" class="my_style">Context-specific interacting genomic regions (GR)</th>
+							<th rowspan="2">Regulatory<br>interaction<br>score [0-1]</th>
+						</tr>
+					
+						<tr>
+							<th><div>CID</div></th>
+							<th><div>Modal</div></th>
+							<th><div>Name</div></th>
+							<th><div>GR</div></th>
+						</tr>
+						
+					</thead>
+		
+				</table>
+			 </div>
+		  </div>
+	   </div>
+	   % }
+	   
+	   % if($rec_anno_pchic ne ''){
+	   <!-- panel 2 -->
+	   <div class="panel panel-default" id="panel2">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark2">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'PCHiC'">Regulatory interactions (PCHiC)</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse2" class="panel-collapse collapse">
+			 <div class = "panel-body">
+				<form role="form" id="filter-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Please enter a keyword searching for contexts (eg fibroblast)" id="mysearch2">
+					</div>
+				</form>
+				
+				<table id="menu2_table" class="compact nowrap" cellpadding="5px" cellspacing="0" width="100%">
+					<thead>
+
+						<tr>
+							<th rowspan="2"></th>
+							<th colspan="4" class="my_style">Context-specific interacting genomic regions (GR)</th>
+							<th rowspan="2">Regulatory<br>interaction<br>score [0-1]</th>
+						</tr>
+					
+						<tr>
+							<th><div>CID</div></th>
+							<th><div>Modal</div></th>
+							<th><div>Name</div></th>
+							<th><div>GR</div></th>
+						</tr>
+						
+					</thead>
+		
+				</table>
+			 </div>
+		  </div>
+	   </div>
+	   % }
+	   
+	   % if($rec_anno_qtl ne ''){
+	   <!-- panel 3 -->
+	   <div class="panel panel-default" id="panel3">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark3">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'QTL'">Regulatory interactions (QTL)</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse3" class="panel-collapse collapse">
+			 <div class = "panel-body">
+				<form role="form" id="filter-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Please enter a keyword searching for contexts (eg fibroblast)" id="mysearch3">
+					</div>
+				</form>
+				
+				<table id="menu3_table" class="compact nowrap" cellpadding="5px" cellspacing="0" width="100%">
+					<thead>
+
+						<tr>
+							<th rowspan="2"></th>
+							<th colspan="4" class="my_style">Context-specific interacting genomic regions (GR)</th>
+							<th rowspan="2">Regulatory<br>interaction<br>score [0-1]</th>
+						</tr>
+					
+						<tr>
+							<th><div>CID</div></th>
+							<th><div>Modal</div></th>
+							<th><div>Name</div></th>
+							<th><div>GR</div></th>
+						</tr>
+						
+					</thead>
+		
+				</table>
+			 </div>
+		  </div>
+	   </div>
+	   % }
+	   
+	</div>
+	% }
+	
+</div>
+

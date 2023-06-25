@@ -1,0 +1,136 @@
+---
+title: ""
+always_allow_html: yes
+output:
+  rmarkdown::html_document:
+        toc: false
+        toc_depth: 2
+        number_sections: false
+        theme: readable
+        highlight: default
+        toc_float: false
+        code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results="asis")
+knitr::opts_chunk$set(cache=FALSE)
+knitr::opts_chunk$set(echo=FALSE)
+knitr::opts_chunk$set(warning=FALSE)
+knitr::opts_chunk$set(message=FALSE)
+knitr::opts_chunk$set(fig_cap="yes")
+```
+
+```{r, eval=FALSE, echo=FALSE}
+cd ~/Sites/XGR/OpenXGR-site
+################################################
+R
+library(tidyverse)
+## rmarkdown::render + bookdown::html_document2
+rmarkdown::render("now.RMD_RI2Terms.Rmd", bookdown::html_document2(number_sections=F,theme=c("readable","united")[2], hightlight="default"), output_dir="/Users/hfang/Sites/XGR/OpenXGR-site/app/examples")
+
+q('no')
+################################################
+```
+
+
+# {.tabset .tabset-fade}
+
+
+## **Input Information**
+A runtime of ``r ls_rmd$runtime`` [``r format(ls_rmd$sT, "%a %b %d %X %Y")`` - ``r format(ls_rmd$eT, "%a %b %d %X %Y")``], time zone (``r Sys.timezone()``).
+
+> **Interactive table** for user-input genomic regions (n=`r nrow(ls_rmd$data_input)` analysed). The table includes three columns: 1st column `Input` for input genomic regions in the format of `chr:start-end` (the genome build `hg19`), 2nd `Chr` for the chromosome, 3rd `Start` for the start coordinate, 4th `End` for the end coordinate, and 5th `Length` for the region length (bp).
+
+```{r}
+data_input <- ls_rmd$data_input %>% mutate(chr=str_replace_all(dGR,':.*',''), start=str_replace_all(dGR,'.*:|-.*',''), end=str_replace_all(dGR,'.*-','')) %>% transmute(`Input`=dGR, Chromosome=chr, Start=start, End=end, Length=as.numeric(end)-as.numeric(start) + 1)
+
+data_input %>% DT::datatable(options=list(pageLength=5,searchHighlight=T,dom='Bfrtip',buttons=c('csv','copy'), dom='t',scrollX=T), style='default', caption="", rownames=FALSE, escape=F, extensions=c('Buttons'))
+```
+
+
+## **Output: Regulatory Genes**
+This tab features two output tables: `Regulatory Gene table` and `Evidence table`.
+
+> **Regulatory Gene table** contains information on regulatory genes (n=`r ls_rmd$num_LG`, identified from input genomic regions), including the column `GScores` (ranged from 1 to 10) that quantifies the degree to which genes are likely regulated by input genomic regions. `Regulatory genes` are sorted by their gene scores and are hyperlinked to `gene-specific information page`. Please refer to **`Evidence table`** for details on context-specific evidence.
+
+```{r}
+filename <- ls_rmd$xlsx_LG
+
+message(sprintf("'%s' '%s' (%s) ...", filename, getwd(), as.character(Sys.time())), appendLF=TRUE)
+
+#tb <- openxlsx::read.xlsx(filename) %>% as_tibble() %>% mutate(`Regulatory genes`=sprintf("<a href='http://127.0.0.1:3080/OpenRI/gene/%s' target='%s'>%s</a>", Gene, Gene, Gene)) %>% transmute(`Regulatory genes`, GScores=signif(GScore,digits=4), Description)
+
+tb <- openxlsx::read.xlsx(filename) %>% as_tibble() %>% mutate(`Regulatory genes`=sprintf("<a href='%sOpenRI/gene/%s' target='%s'>%s</a>", ls_rmd$host_port, Gene, Gene, Gene)) %>% transmute(`Regulatory genes`, GScores=signif(GScore,digits=4), Description)
+
+tb %>% DT::datatable(options=list(pageLength=5,searchHighlight=T,dom='Bfrtip',buttons=c('csv','copy'), dom='t',scrollX=T), style='default', caption="", rownames=FALSE, escape=F, extensions=c('Buttons'))
+```
+
+<br>
+
+> **Evidence table** displays information about the genomic regions (listed under the column `GR`) that overlap the input genomic regions (listed under the column `Input`). The overlapped regions are used to define regulatory genes (listed under the column `Regulatory genes`) based on the evidence provided (see the column `Evidence`). The column `Context` indicates the contexts, that is, the prefix `PCHiC_` for contexts under modal `PCHIC (promoter capture Hi-C)`, the prefix `ABC_` for contexts under modal `ABC (activity-by-contact)`, and the prefix `QTL_` for contexts under modal `QTL (quantitative trait locus)`.
+
+```{r}
+filename <- ls_rmd$xlsx_LG_evidence
+
+message(sprintf("'%s' '%s' (%s) ...", filename, getwd(), as.character(Sys.time())), appendLF=TRUE)
+
+tb <- openxlsx::read.xlsx(filename) %>% as_tibble() %>% transmute(`Input`=dGR, GR, `Regulatory genes`=Gene, Context)
+
+tb %>% DT::datatable(options=list(pageLength=5,searchHighlight=T,dom='Bfrtip',buttons=c('csv','copy'), dom='t',scrollX=T), style='default', caption="", rownames=FALSE, escape=F, extensions=c('Buttons'))
+```
+
+
+## **Output: Ontology Terms**
+This tab features one output table: `Ontology Term table`.
+
+> **Ontology Term table** that displays enriched ontology terms based on `r ls_rmd$num_genes` regulatory genes. Each enriched term (the columns `Ontology`, `Term ID` and `Term Name`) has the enrichment z-score (`Z-score`), the enrichment significance level (`FDR`), odds ratio (`Odds ratio`) and 95% confidence intervals (`95% CI`), the number (`Num`) and list (`Members`) of member genes that overlap with regulatory genes. The table is sorted by FDR ascendingly.
+
+```{r}
+filename <- ls_rmd$xlsx_enrichment
+
+message(sprintf("'%s' '%s' (%s) ...", filename, getwd(), as.character(Sys.time())), appendLF=TRUE)
+
+tb <- openxlsx::read.xlsx(filename) %>% as_tibble() %>% transmute(Ontology=namespace, `Term ID`=id, `Term Name`=name, `Z-score`=zscore, FDR=signif(adjp,digits=4), `Odds ratio`=or, `95% CI`=str_c('[',CIl,', ',CIu,']'), Num=nO, Members=overlap) %>% arrange(FDR)
+
+tb %>% DT::datatable(options=list(pageLength=1,searchHighlight=T,dom='Bfrtip',buttons=c('csv','copy'), dom='t',scrollX=T), style='default', caption="", rownames=FALSE, escape=F, extensions=c('Buttons'))
+```
+
+
+## **Output: Plots**
+This tab features two output plots: `Dotplot` and `Forest plot`.
+
+> **Dotplot** of enriched ontology terms identified using Fisher's exact test. An editable pdf file is also available for download.
+
+```{r}
+hlink_pdf <- oAuxEmbed(ls_rmd$pdf_dotplot, link.text="DOWNLOAD .pdf")
+```
+<div class="text-right">`r hlink_pdf`</div>
+
+
+```{r dotplot, fig.cap="A dotplot of enriched ontology terms. The dots colored in dark green represent the terms with FDR < 0.05, indicating statistical significance. The top 5 significant terms (ordered by FDR ascendingly) are labelled for easier interpretation.", fig.width=5, fig.height=4, echo=FALSE, eval=T, fig.align="center",out.width="55%"}
+library(png)
+library(grid)
+filename <- ls_rmd$png_dotplot
+img <- readPNG(filename)
+grid.raster(img)
+```
+
+<br>
+
+> **Forest plot** of enriched ontology terms identified using Fisher's exact test. An editable pdf file is also available for download.
+
+```{r}
+hlink_pdf <- oAuxEmbed(ls_rmd$pdf_forestplot, link.text="DOWNLOAD .pdf")
+```
+<div class="text-right">`r hlink_pdf`</div>
+
+
+```{r forest, fig.cap="Forest plot for enriched ontology terms (ordered by odds ratio descendingly).", fig.width=5, fig.height=4, echo=FALSE, eval=T, fig.align="center",out.width="55%"}
+library(png)
+library(grid)
+filename <- ls_rmd$png_forestplot
+img <- readPNG(filename)
+grid.raster(img)
+```
+

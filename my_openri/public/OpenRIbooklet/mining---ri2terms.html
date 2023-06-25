@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 6 Mining - RI2Terms | OpenRI User Manual</title>
+  <meta name="description" content="Section 6 Mining - RI2Terms | OpenRI User Manual" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 6 Mining - RI2Terms | OpenRI User Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 6 Mining - RI2Terms | OpenRI User Manual" />
+  
+  
+  
+
+
+
+<meta name="date" content="2023-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mining---ri2genes.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">OpenRI User Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#needs"><i class="fa fa-check"></i><b>1.1</b> Needs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>1.2</b> Contents</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#mining"><i class="fa fa-check"></i><b>1.3</b> Mining</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="web-server.html"><a href="web-server.html"><i class="fa fa-check"></i><b>2</b> Web-server</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="web-server.html"><a href="web-server.html#frontpage"><i class="fa fa-check"></i><b>2.1</b> Frontpage</a></li>
+<li class="chapter" data-level="2.2" data-path="web-server.html"><a href="web-server.html#mobile"><i class="fa fa-check"></i><b>2.2</b> Mobile</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mining---search.html"><a href="mining---search.html"><i class="fa fa-check"></i><b>3</b> Mining - Search</a></li>
+<li class="chapter" data-level="4" data-path="mining---browse.html"><a href="mining---browse.html"><i class="fa fa-check"></i><b>4</b> Mining - Browse</a></li>
+<li class="chapter" data-level="5" data-path="mining---ri2genes.html"><a href="mining---ri2genes.html"><i class="fa fa-check"></i><b>5</b> Mining - RI2Genes</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="mining---ri2genes.html"><a href="mining---ri2genes.html#input-interface"><i class="fa fa-check"></i><b>5.1</b> Input Interface</a></li>
+<li class="chapter" data-level="5.2" data-path="mining---ri2genes.html"><a href="mining---ri2genes.html#interactive-results"><i class="fa fa-check"></i><b>5.2</b> Interactive Results</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mining---ri2terms.html"><a href="mining---ri2terms.html"><i class="fa fa-check"></i><b>6</b> Mining - RI2Terms</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="mining---ri2terms.html"><a href="mining---ri2terms.html#input-interface-1"><i class="fa fa-check"></i><b>6.1</b> Input Interface</a></li>
+<li class="chapter" data-level="6.2" data-path="mining---ri2terms.html"><a href="mining---ri2terms.html#interactive-results-1"><i class="fa fa-check"></i><b>6.2</b> Interactive Results</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="/OpenRI" target="blank">OpenRI</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenRI User Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mining---ri2terms" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Section 6</span> Mining - RI2Terms<a href="mining---ri2terms.html#mining---ri2terms" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="input-interface-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Input Interface<a href="mining---ri2terms.html#input-interface-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>Input</strong></p>
+</blockquote>
+<ul>
+<li><p><code>Step 1</code> and <code>Step 2</code>: a list of user-input genomic regions, together with the reference genome build. Please make sure that the input genomic coordinates (<code>Step 1</code>) are consistent with the specified genome build (<code>Step 2</code>).</p></li>
+<li><p><code>Step 3</code>: a list of modals (PCHiC, ABC, and QTL).</p></li>
+<li><p><code>Step 4</code>: specifying which genes to identify ontology terms based on which ontology.</p></li>
+</ul>
+<blockquote>
+<p><strong>Output</strong></p>
+</blockquote>
+<ul>
+<li><a href="/app/examples/_tmp_RMD_RI2Terms.html">Example Output</a> includes interactive tables for regulatory genes (and evidence) and ontology terms, as well as high-quality figures for enriched terms. A summary of input data and the runtime (computed on the server side) is also returned to the users.</li>
+</ul>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-interface"></span>
+<img src="index_files/figure-html/RI2Terms-interface-1.png" alt="The RI2Terms interface." width="90%" />
+<p class="caption">
+FIGURE 6.1: The RI2Terms interface.
+</p>
+</div>
+</div>
+<div id="interactive-results-1" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Interactive Results<a href="mining---ri2terms.html#interactive-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Under the tab <code>Input Information</code>, <code>Interactive table</code> lists user-input genomic regions.</p></li>
+<li><p>Under the tab <code>Output: Regulatory Genes</code>, <code>Regulatory Gene table</code> lists regulatory genes that are also hyperlinked to <code>gene-specific information page</code>, while <code>Evidence table</code> displays information about how to define regulatory genes, that is, using which contexts and which regulatory interactions.</p></li>
+<li><p>Under the tab <code>Output: Ontology Terms</code>, <code>Ontology Term table</code> displays enriched ontology terms.</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-results-terms"></span>
+<img src="index_files/figure-html/RI2Terms-results-terms-1.png" alt="Ontology Term table listing enriched ontology terms under the tab `Output: Ontology Terms`." width="95%" />
+<p class="caption">
+FIGURE 6.2: Ontology Term table listing enriched ontology terms under the tab <code>Output: Ontology Terms</code>.
+</p>
+</div>
+<br>
+<hr>
+<ul>
+<li>Under the tab <code>Output: Graphical Visuals</code>, two output plots <code>Dotplot</code> and <code>Forest plot</code> illustrates enriched ontology terms. Also provided are the downloadable PDF files.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-results-plots"></span>
+<img src="index_files/figure-html/RI2Terms-results-plots-1.png" alt="Dotplot for enriched ontology terms." width="95%" />
+<p class="caption">
+FIGURE 6.3: Dotplot for enriched ontology terms.
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mining---ri2genes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 4 Faceted Search | OpenRI User Manual</title>
+  <meta name="description" content="Section 4 Faceted Search | OpenRI User Manual" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 4 Faceted Search | OpenRI User Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 4 Faceted Search | OpenRI User Manual" />
+  
+  
+  
+
+
+
+<meta name="date" content="2023-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mobile-first-webserver.html"/>
+<link rel="next" href="ontology-hierarchy.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">OpenRI User Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivations"><i class="fa fa-check"></i><b>1.1</b> Motivations</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#timelines"><i class="fa fa-check"></i><b>1.2</b> Timelines</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>1.3</b> Contents</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#mining"><i class="fa fa-check"></i><b>1.4</b> Mining</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="landing-frontpage.html"><a href="landing-frontpage.html"><i class="fa fa-check"></i><b>2</b> Landing Frontpage</a></li>
+<li class="chapter" data-level="3" data-path="mobile-first-webserver.html"><a href="mobile-first-webserver.html"><i class="fa fa-check"></i><b>3</b> Mobile-First Webserver</a></li>
+<li class="chapter" data-level="4" data-path="faceted-search.html"><a href="faceted-search.html"><i class="fa fa-check"></i><b>4</b> Faceted Search</a></li>
+<li class="chapter" data-level="5" data-path="ontology-hierarchy.html"><a href="ontology-hierarchy.html"><i class="fa fa-check"></i><b>5</b> Ontology Hierarchy</a></li>
+<li class="chapter" data-level="6" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html"><i class="fa fa-check"></i><b>6</b> Enrichment Analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#user-input-interface"><i class="fa fa-check"></i><b>6.1</b> User-input interface</a></li>
+<li class="chapter" data-level="6.2" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#enrichment-results"><i class="fa fa-check"></i><b>6.2</b> Enrichment results</a></li>
+<li class="chapter" data-level="6.3" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#info-button"><i class="fa fa-check"></i><b>6.3</b> Info button</a></li>
+<li class="chapter" data-level="6.4" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#error-messages"><i class="fa fa-check"></i><b>6.4</b> Error messages</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="/OpenRI" target="blank">OpenRI</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenRI User Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="faceted-search" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Section 4</span> Faceted Search<a href="faceted-search.html#faceted-search" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The faceted search is a mining hub, providing hyperlinks from the search results. In addition to identifiers, full text query is also supported for protein domains and ontology terms. Search results for domains are hyperlinked to domain-specific pages with the tabular display for ontology terms used to annotate them. Search results for a particular ontology terms are hyperlinked to the term-specific page, displaying the term information, annotated domains (of different levels), and where available, crosslinked terms (according to the degree of shared annotations for SCOP domains).</p>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:search"></span>
+<img src="index_files/figure-html/search-1.png" alt="Faceted search enabling various mining opportunities of the dcGO resource, all in one go." width="100%" />
+<p class="caption">
+FIGURE 4.1: Faceted search enabling various mining opportunities of the dcGO resource, all in one go.
+</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mobile-first-webserver.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ontology-hierarchy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>

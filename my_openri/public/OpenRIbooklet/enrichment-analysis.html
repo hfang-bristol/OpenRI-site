@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 6 Enrichment Analysis | OpenRI User Manual</title>
+  <meta name="description" content="Section 6 Enrichment Analysis | OpenRI User Manual" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 6 Enrichment Analysis | OpenRI User Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 6 Enrichment Analysis | OpenRI User Manual" />
+  
+  
+  
+
+
+
+<meta name="date" content="2023-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mining---browse.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">OpenRI User Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#needs"><i class="fa fa-check"></i><b>1.1</b> Needs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>1.2</b> Contents</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#mining"><i class="fa fa-check"></i><b>1.3</b> Mining</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="landing-frontpage.html"><a href="landing-frontpage.html"><i class="fa fa-check"></i><b>2</b> Landing Frontpage</a></li>
+<li class="chapter" data-level="3" data-path="mobile-webserver.html"><a href="mobile-webserver.html"><i class="fa fa-check"></i><b>3</b> Mobile Webserver</a></li>
+<li class="chapter" data-level="4" data-path="mining---search.html"><a href="mining---search.html"><i class="fa fa-check"></i><b>4</b> Mining - Search</a></li>
+<li class="chapter" data-level="5" data-path="mining---browse.html"><a href="mining---browse.html"><i class="fa fa-check"></i><b>5</b> Mining - Browse</a></li>
+<li class="chapter" data-level="6" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html"><i class="fa fa-check"></i><b>6</b> Enrichment Analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#user-input-interface"><i class="fa fa-check"></i><b>6.1</b> User-input interface</a></li>
+<li class="chapter" data-level="6.2" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#enrichment-results"><i class="fa fa-check"></i><b>6.2</b> Enrichment results</a></li>
+<li class="chapter" data-level="6.3" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#info-button"><i class="fa fa-check"></i><b>6.3</b> Info button</a></li>
+<li class="chapter" data-level="6.4" data-path="enrichment-analysis.html"><a href="enrichment-analysis.html#error-messages"><i class="fa fa-check"></i><b>6.4</b> Error messages</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="/OpenRI" target="blank">OpenRI</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenRI User Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="enrichment-analysis" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Section 6</span> Enrichment Analysis<a href="enrichment-analysis.html#enrichment-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="user-input-interface" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> User-input interface<a href="enrichment-analysis.html#user-input-interface" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>Input</strong></p>
+</blockquote>
+<ul>
+<li><p><code>Step 1</code> and <code>Step 2</code>: a list of user-input domains, together with the domain type specified. Please make sure that the input domain identifiers (<code>Step 2</code>) are consistent with the domain level (<code>Step 1</code>); otherwise, the error messages will be prompted</p></li>
+<li><p><code>Step 3</code>: a list of ontologies supported.</p></li>
+<li><p><code>More Controls</code>: parameters fine-tuned for steps described above.</p></li>
+</ul>
+<blockquote>
+<p><strong>Output</strong></p>
+</blockquote>
+<ul>
+<li><a href="/app/examples/_tmp_RMD_enrichment.html">Example Output</a> includes an interactive table for enriched ontology terms, and a dotplot (illustrating enriched ontology terms). A summary of input data and the runtime (computed on the server side) is also returned to the users for the reference.</li>
+</ul>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-interface"></span>
+<img src="index_files/figure-html/enrichment-interface-1.png" alt="The interface of enrichment analysis. The `Show/Hide Info` toggle button contains the help information on how to use , including input, output and other useful information." width="90%" />
+<p class="caption">
+FIGURE 6.1: The interface of enrichment analysis. The <code>Show/Hide Info</code> toggle button contains the help information on how to use , including input, output and other useful information.
+</p>
+</div>
+</div>
+<div id="enrichment-results" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Enrichment results<a href="enrichment-analysis.html#enrichment-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Under the tab <code>Input domain information</code>, <code>An interactive table</code> lists user-input domains that are also hyperlinked to <code>the domain-specific information page</code>.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-results-input"></span>
+<img src="index_files/figure-html/enrichment-results-input-1.png" alt="The user-input data under the tab `Input domain information` returned for the exploration." width="95%" />
+<p class="caption">
+FIGURE 6.2: The user-input data under the tab <code>Input domain information</code> returned for the exploration.
+</p>
+</div>
+<br>
+<hr>
+<ul>
+<li>Under the tab <code>Enriched ontology terms</code>, <code>An interactive table</code> lists enriched ontology terms that are also hyperlinked to <code>the term-specific information page</code>.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-results-output"></span>
+<img src="index_files/figure-html/enrichment-results-output-1.png" alt="An interactive table listing enriched ontology terms under the tab `Enriched ontology terms`." width="95%" />
+<p class="caption">
+FIGURE 6.3: An interactive table listing enriched ontology terms under the tab <code>Enriched ontology terms</code>.
+</p>
+</div>
+<br>
+<hr>
+<ul>
+<li>Under the tab <code>Dotplot for enriched ontology terms</code>, <code>An dotplot</code> illustrates enriched ontology terms. Also provided is the downloadable PDF file.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-results-dotplot"></span>
+<img src="index_files/figure-html/enrichment-results-dotplot-1.png" alt="A dotplot for enriched ontology terms." width="95%" />
+<p class="caption">
+FIGURE 6.4: A dotplot for enriched ontology terms.
+</p>
+</div>
+</div>
+<div id="info-button" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Info button<a href="enrichment-analysis.html#info-button" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The user-request interface has the <code>Show/Hide Info</code> toggle button that contains the information on use, including the details on input, output and other useful information, while the <code>Example Input/Output</code> button showcases the example input/output.</p>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-info"></span>
+<img src="index_files/figure-html/enrichment-info-1.png" alt="The screenshot for the `Show/Hide Info` toggle button in the user-input interface." width="95%" />
+<p class="caption">
+FIGURE 6.5: The screenshot for the <code>Show/Hide Info</code> toggle button in the user-input interface.
+</p>
+</div>
+</div>
+<div id="error-messages" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Error messages<a href="enrichment-analysis.html#error-messages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The error messages will be prompted if the inputs are invalid (see the screenshot below). Notably, in the results page, a summary of input domain data is also returned to the users for the reference.</p>
+<hr>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enrichment-error"></span>
+<img src="index_files/figure-html/enrichment-error-1.png" alt="The screenshot for the error messages appeared when the input is invalid." width="95%" />
+<p class="caption">
+FIGURE 6.6: The screenshot for the error messages appeared when the input is invalid.
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mining---browse.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>

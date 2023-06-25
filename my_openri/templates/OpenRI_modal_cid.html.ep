@@ -1,0 +1,260 @@
+% layout 'default', tab => '/OpenRI/modal/cid';
+% title 'OpenRI - Regulatory interaction per context';
+
+% content_for css => begin
+	
+	<style>
+		thead > tr > th {
+			font-size: 14px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			background-color: rgba(204,204,204,0.15);
+			border: 1px solid rgba(204,204,204,0.5);
+		}
+		
+		thead > tr > th.my_style {
+			font-size: 14px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			background-color: rgba(204,204,204,0.3);
+			border: 1px solid rgba(204,204,204,0.5);
+		}
+		
+		tbody > tr > td {
+			font-size: 13px;
+			text-align: left;
+			border: 1px solid #ccc;
+		}
+		tbody > tr > td:first-child {
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		tbody > tr > td:nth-child(2) {
+			text-align: left;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		tbody > tr > td:nth-last-child(1) {
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.2);
+		}
+		
+		tbody > tr > td:hover {
+			-moz-box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+			-webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+			box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.8);
+		}
+
+		tfoot > tr > th {
+			font-size: 11px;
+			color: rgba(0,0,0,0.8);
+			text-align: center;
+			border: 1px solid rgba(204,204,204,0.1);
+			background-color: transparent;
+		}
+
+		.jumbotron1 {
+			padding-top: 40px;
+			padding-bottom: 20px;
+			margin: 0 0 0px 0;
+			/* background-image: url("/app/img/dcGO.jumbotron.png"); */
+			background-repeat: space;
+			background-color: rgba(250,250,250,0.2);
+			border-color: rgba(250,250,250,0.2);
+		}
+
+	</style>
+% end
+
+% content_for scripts => begin
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			/////////////////////////////////////////
+			% if($rec_anno ne ''){
+				// menu1_table
+				var table1 = $('#menu1_table').DataTable({
+					"aaData": <%== $rec_anno %>,
+					"deferRender": true,
+					"lengthMenu": [[5,10,50,-1], [5,10,50,"All"]],
+					"aoColumns": [
+						{
+							mData:"cid",
+							bSearchable: false,
+							asSorting: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},
+						{
+							mData:"gr",
+							bSearchable: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"gsymbol",
+							bSearchable: true,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},						
+						{
+							mData:"gdes",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"score",
+							bSearchable: false,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+					],
+					// Hidden columns
+					"columnDefs": [
+						{
+							"targets": [0],
+							"sortable": false,
+						},
+					],
+					"order": [[4,"desc"], [2,"asc"]],
+					dom: 'Brtlp',
+					buttons: [
+						'copy',
+						'excel',
+						'pdf',
+					],
+
+				});
+				// javascript for menu1_table
+				$('[id^=menu1_table] thead tr th').addClass('rotate');
+				$('[id^=menu1_table] tbody').on('mouseover', 'td', function(){
+					$(this).closest('tr').css("background-color", "rgba(249,178,51,0.2)");
+				});
+				$('[id^=menu1_table] tbody').on('mouseout', 'tr', function(){
+					$(this).css("background-color", "transparent");
+				});
+				$('#mysearch1').on('keyup', function() {
+					table1.search(this.value).draw();
+				});
+			% }
+			
+		});
+	</script>
+% end
+
+
+<%
+
+%>
+
+
+<div class="container">
+	<div class="jumbotron1">  
+		
+		<div class="text-right">
+			<a href="javascript:newWin('/OpenRIbooklet/mining---browse.html', 'OpenRIbooklet', '909', '1169')"><span class="fa fa-book fa-lg fa-flip-horizontal"></span>&nbsp;User Manual</a>&nbsp;&nbsp;&nbsp;
+		</div>
+		
+		<div class="text-center">
+			<h3><i class="fa fa-copyright fa-lg"></i>&nbsp;&nbsp;<%== $cid %>: <%== $cid_data->{label} %></h3>
+		</div>
+		
+	</div>
+</div>
+
+<!-- results -->
+<div id="results-container" class="container collapse in">
+	
+	% if($cid_data ne ''){
+    <div class="panel panel-primary"">
+        <div class="panel-heading">
+            <h3 class="panel-title" id="bookmark_general"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Context information</strong></h3>
+        </div>
+        <div class="panel-body">
+			<dl>
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;CID</dt>
+				<dd><%== $cid_data->{CID} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Name</dt>
+				<dd><%== $cid_data->{label} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Modal</dt>
+				<dd><%== $cid_data->{Modal_info} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Primary source</dt>
+				<dd><a class='btn btn-default btn-xs active' href='https://www.ncbi.nlm.nih.gov/pubmed/<%== $cid_data->{pmid} %>' target='<%== $cid_data->{pmid} %>'><i class='fa fa-external-link fa-lg' aria-hidden='true'></i>&nbsp;&nbsp;PMID:&nbsp;<%== $cid_data->{pmid} %></a></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Statistics overview</dt>
+				<dd>A total of <strong><%== $cid_data->{num} %></strong> regulatory interactions involving <strong><%== $cid_data->{num_gene} %></strong> genes</dd>
+				
+			</dl>
+        </div>
+    </div>
+	% }
+	
+	
+	<!-- tables -->
+	% if($rec_anno ne ''){
+	<div class="panel-group" id="accordion">
+	
+	   % if($rec_anno ne ''){
+	   <!-- panel 1 -->
+	   <div class="panel panel-default" id="panel1">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark1">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+				   <i class="fa fa-minus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details gene-centered regulatory interactions">Regulatory interactions</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse1" class="panel-collapse collapse in">
+			 <div class = "panel-body">
+				<form role="form" id="filter-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Please enter a keyword searching for genes (eg interleukin)" id="mysearch1">
+					</div>
+				</form>
+				
+				<table id="menu1_table" class="compact nowrap" cellpadding="5px" cellspacing="0" width="100%">
+					<thead>
+					
+						<tr>
+							<th rowspan="2"></th>
+							<th colspan="3" class="my_style">Regulatory interactions between genomic regions (GR) and genes</th>
+							<th rowspan="2">Regulatory<br>interaction<br>score [0-1]</th>
+						</tr>
+					
+						<tr>
+							<th><div>GR</div></th>
+							<th><div>Gene symbol</div></th>
+							<th><div>Gene description</div></th>
+							
+						</tr>
+						
+					</thead>
+		
+				</table>
+			 </div>
+		  </div>
+	   </div>
+	   % }
+	   
+	</div>
+	% }
+	
+</div>
+

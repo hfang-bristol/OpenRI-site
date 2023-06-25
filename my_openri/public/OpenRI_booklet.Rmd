@@ -1,0 +1,235 @@
+---
+documentclass: book
+classoption: oneside
+title: "OpenRI User Manual"
+date: "`r Sys.Date()`"
+vignette: >
+ %\VignetteIndexEntry{OpenRI User Manual}
+ %\VignetteEngine{knitr::rmarkdown}
+ %\VignetteEncoding{UTF-8}
+output: 
+  BiocStyle::html_document:
+        toc: true
+        toc_depth: 3
+        number_sections: true
+        theme: journal
+        highlight: monochrome
+        toc_float: true
+        code_folding: hide
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(collapse=TRUE, comment="##")
+knitr::opts_chunk$set(dpi=300)
+knitr::opts_chunk$set(cache=FALSE)
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(warning=FALSE)
+knitr::opts_chunk$set(message=FALSE)
+knitr::opts_chunk$set(fig_cap="yes")
+knitr::opts_chunk$set(eval=F)
+```
+
+
+# Overview {#index}
+
+```{r logo, fig.cap="The logo for the OpenRI resource.", fig.width=10, fig.height=3.8, echo=FALSE, eval=T, fig.align="center",out.width="40%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.logo.png")
+grid.raster(img)
+```
+
+<hr>
+
+## Needs
+
+Most available interactions are generated/curated between genes (or proteins), and regulatory interactions involving non-coding genome are less studied, both in terms of resources and analyses. The OpenRI resource addresses these needs, including manual curation of gene-directed regulatory interactions across a wide range of contexts, and supporting their use for data mining inclusive of non-coding genome.
+
+
+## Contents
+
+The OpenRI resource is designed to be open and scalable for gene-directed multimodal regulatory interactions. These interactions are currently organised into three modals: `Activity-By-Contact` ([ABC](https://www.ncbi.nlm.nih.gov/pubmed/33828297)) for enhancer-gene maps, `Promoter Capture Hi-C` ([PCHiC](https://www.ncbi.nlm.nih.gov/pubmed/31501517)), and `Quantitative Trait Loci` ([QTL](https://www.ncbi.nlm.nih.gov/pubmed/34493866)).
+
+
+## Mining
+
+In parallel with the growth in summary-level epi/genomic datasets generated from cohort-scale studies, OpenRI provides the users with web-based data-mining opportunities inclusive of non-coding genome, including: 
+
+- [Mining - Search], an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages; 
+
+- [Mining - Browse], enabling interactive exploration of regulatory interactions through navigating contexts; 
+
+- [Mining - RI2Genes], mining the resource to identify regulatory genes (see [Example Output](/app/examples/_tmp_RMD_RI2Genes.html)) from user-input data;
+
+- [Mining - RI2Terms], mining the resource to identify regulatory genes and ontology terms (see [Example Output](/app/examples/_tmp_RMD_RI2Terms.html)) from user-input data.
+
+
+
+```{r, eval=FALSE, echo=FALSE}
+cd ~/Sites/XGR/OpenRI-site/BOOKLET
+################################################
+R
+library(tidyverse)
+
+## bookdown::render_book + bookdown::gitbook
+## use configuration in '_output.yml' and '_bookdown.yml'
+bookdown::render_book("now.OpenRI_booklet.Rmd", c("bookdown::gitbook","bookdown::pdf_book","bookdown::tufte_html_book")[1])
+
+q('no')
+####################################################
+```
+
+
+# Web-server
+
+## Frontpage
+
+```{r app-front, fig.cap="The landing frontpage of the OpenRI web-server, featuring 4 key data-mining opportunities: `Search`, `Browse`, `RI2Genes`, and `RI2Terms`.", fig.width=10, fig.height=4.5, echo=FALSE, eval=TRUE, fig.align="center",out.width="100%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.app.front.png")
+grid.raster(img)
+```
+
+
+## Mobile 
+
+The OpenRI web-server is developed being mobile-first and responsive (`frontend`), while a next-generation Perl web framework `backend` enables real-time browsing and mining of the OpenRI resource.
+
+<hr>
+
+```{r app-iphone, fig.cap="The screenshots for the OpenRI web-server visited using a smartphone. Left: the frontpage; Right: the about page.", fig.width=10, fig.height=7.2, echo=FALSE, eval=TRUE, fig.align="center",out.width="90%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.app.iphone.png")
+grid.raster(img)
+```
+
+
+# Mining - Search
+
+The faceted search is a mining hub, providing hyperlinks from the search results. Full text query is supported for contexts and genes. Search results for contexts are hyperlinked to context-specific pages, displaying the context information as well as the tabular display for regulatory interactions between genomic regions and genes. Search results for a particular gene are hyperlinked to the gene-specific page, displaying the gene information, its regulatory interactions (displayed separately for different modals), and where available, its annotated terms (of different ontologies).
+
+<hr>
+
+```{r search, fig.cap="Faceted search enabling centralised data-mining opportunities of the OpenRI resource.", fig.width=10, fig.height=4.3, echo=FALSE, eval=T, fig.align="center",out.width="100%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.search.png")
+grid.raster(img)
+```
+
+
+# Mining - Browse
+
+```{r browse, fig.cap="The context browse interfaces for fetching regulatory interactions via navigating contexts, illustrated for the context `C0001: A549_Roadmap (PMID33828297)`. The integers in the hexagons denote sequential clicks. `Top`: the browse page lists contexts for regulatory interactions with different modals, including the modal `Activity-By-Contact (ABC)`. `Bottom-left`: the context-specific page for the context `C0001: A549_Roadmap (PMID33828297)`, which lists its regulatory interactions between genomic regions and genes (each gene hyperlinked to the gene-specific page). `Bottom-right`: the gene-specific page for the gene `ROCK1P1`, which lists its regulatory interactions separately for different modals (this is, `ABC`, `PCHiC` and `QTL`), with each context hyperlinked to the context-specific page.", fig.width=10, fig.height=8.8, echo=FALSE, eval=TRUE, fig.align="center",out.width="100%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.browse.png")
+grid.raster(img)
+```
+
+
+# Mining - RI2Genes
+
+## Input Interface
+
+> **Input**
+
+- `Step 1` and `Step 2`: a list of user-input genomic regions, together with the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
+
+- `Step 3`: a list of modals (PCHiC, ABC, and QTL).
+
+> **Output**
+
+- [Example Output](/app/examples/_tmp_RMD_RI2Genes.html) includes interactive tables for regulatory genes and evidence. A summary of input data and the runtime (computed on the server side) is also returned to the users.
+
+<hr>
+
+
+```{r RI2Genes-interface, fig.cap="The RI2Genes interface.", fig.width=10, fig.height=5.3, echo=FALSE, eval=TRUE, fig.align="center",out.width="90%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Genes.interface.png")
+grid.raster(img)
+```
+
+
+## Interactive Results
+
+- Under the tab `Input Information`, `Interactive table` lists user-input genomic regions.
+
+```{r RI2Genes-results-input, fig.cap="The user-input data under the tab `Input Information` returned for the exploration.", fig.width=10, fig.height=6.5, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Genes.results_input.png")
+grid.raster(img)
+```
+
+<br>
+<hr>
+
+- Under the tab `Output: Regulatory Genes`, `Regulatory Gene table` lists regulatory genes that are also hyperlinked to `gene-specific information page`, while `Evidence table` displays information about how to define regulatory genes, that is, using which contexts and which regulatory interactions.
+
+```{r RI2Genes-results-genes, fig.cap="Regulatory Gene table listing regulatory genes under the tab `Output: Regulatory Genes`.", fig.width=10, fig.height=6.7, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Genes.results_genes.png")
+grid.raster(img)
+```
+
+
+
+# Mining - RI2Terms
+
+## Input Interface
+
+> **Input**
+
+- `Step 1` and `Step 2`: a list of user-input genomic regions, together with the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
+
+- `Step 3`: a list of modals (PCHiC, ABC, and QTL).
+
+- `Step 4`: specifying which genes to identify ontology terms based on which ontology.
+
+> **Output**
+
+- [Example Output](/app/examples/_tmp_RMD_RI2Terms.html) includes interactive tables for regulatory genes (and evidence) and ontology terms, as well as  high-quality figures for enriched terms. A summary of input data and the runtime (computed on the server side) is also returned to the users.
+
+<hr>
+
+
+```{r RI2Terms-interface, fig.cap="The RI2Terms interface.", fig.width=10, fig.height=6.4, echo=FALSE, eval=TRUE, fig.align="center",out.width="90%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Terms.interface.png")
+grid.raster(img)
+```
+
+
+## Interactive Results
+
+- Under the tab `Input Information`, `Interactive table` lists user-input genomic regions.
+
+- Under the tab `Output: Regulatory Genes`, `Regulatory Gene table` lists regulatory genes that are also hyperlinked to `gene-specific information page`, while `Evidence table` displays information about how to define regulatory genes, that is, using which contexts and which regulatory interactions.
+
+- Under the tab `Output: Ontology Terms`, `Ontology Term table` displays enriched ontology terms.
+
+```{r RI2Terms-results-terms, fig.cap="Ontology Term table listing enriched ontology terms under the tab `Output: Ontology Terms`.", fig.width=10, fig.height=9.2, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Terms.results_terms.png")
+grid.raster(img)
+```
+
+<br>
+<hr>
+
+- Under the tab `Output: Graphical Visuals`, two output plots `Dotplot` and `Forest plot` illustrates enriched ontology terms. Also provided are the downloadable PDF files.
+
+```{r RI2Terms-results-plots, fig.cap="Dotplot for enriched ontology terms.", fig.width=10, fig.height=9, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+library(png)
+library(grid)
+img <- readPNG("booklet.OpenRI.RI2Terms.results_plots.png")
+grid.raster(img)
+```
