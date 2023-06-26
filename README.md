@@ -24,9 +24,8 @@ my_openri
 │   │   ├── ajex
 │   │   ├── css
 │   │   ├── examples
+│   │   ├── img
 │   │   └── js
-│   ├── dcGObooklet
-│   │   └── libs
 │   └── dep
 │       ├── HighCharts
 │       ├── Select2

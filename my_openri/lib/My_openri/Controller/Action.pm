@@ -7,20 +7,20 @@ use List::Util qw( min max sum );
 use POSIX qw(strftime);
 use IO::Uncompress::Gunzip qw(gunzip $GunzipError);
 
-# Render template "dcGO_sitemap.html.ep"
-# Render template "dcGO_hie.html.ep"
+# Render template "OpenRI_about.html.ep"
 sub index_default {
 	my $c = shift;
   	$c->render();
 }
+
 
 sub booklet {
   	my $c = shift;
 	$c->redirect_to("/OpenRIbooklet/index.html");
 }
 
+
 # Render template "index.html.ep"
-# Render template "demo.html.ep"
 sub index {
 	my $c = shift;
 	
@@ -162,7 +162,7 @@ sub OpenRI_gene {
 	##############
 
 	if(1){
-		#SELECT Gene,Description FROM gene_info WHERE Gene="LOXL4";
+		#SELECT Gene,Description FROM gene_info WHERE Gene="CCDC127";
 		$sth = $dbh->prepare( 'SELECT Gene,GeneID,GeneLoc,Description FROM gene_info WHERE Gene=?;' );
 		$sth->execute($gene);
 		$gene_data=$sth->fetchrow_hashref;
@@ -178,8 +178,8 @@ sub OpenRI_gene {
 	################
 	# ri (ABC)
 	################
-	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="ABC" AND a.Gene="LOXL4" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
-	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="ABC" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
+	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="ABC" AND a.Gene="CCDC127" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
+	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="ABC" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
 	$sth->execute($gene);
 	$json = "";
 	if($sth->rows > 0){
@@ -205,8 +205,8 @@ sub OpenRI_gene {
 	################
 	# ri (PCHiC)
 	################
-	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="PCHiC" AND a.Gene="LOXL4" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
-	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="PCHiC" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
+	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="PCHiC" AND a.Gene="LOXL4" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
+	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="PCHiC" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
 	$sth->execute($gene);
 	$json = "";
 	if($sth->rows > 0){
@@ -233,8 +233,8 @@ sub OpenRI_gene {
 	################
 	# ri (QTL)
 	################
-	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="QTL" AND a.Gene="LOXL4" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
-	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM ri as a, context_info as b WHERE a.CID=b.CID AND b.Modal="QTL" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
+	#SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="QTL" AND a.Gene="LOXL4" ORDER BY a.CID ASC,a.Score DESC LIMIT 10;
+	$sth = $dbh->prepare('SELECT b.CID AS cid, b.Modal AS cmodal, b.Context AS ccontext, b.label AS clabel, a.GR AS gr, a.Score AS score FROM regulatory_interaction as a, context_info as b WHERE a.CID=b.CID AND b.Modal="QTL" AND a.Gene=? ORDER BY a.CID ASC,a.Score DESC;');
 	$sth->execute($gene);
 	$json = "";
 	if($sth->rows > 0){
@@ -289,8 +289,8 @@ sub OpenRI_modal_cid {
 	###############################################
 	# rec_anno
 	##############
-	#SELECT a.CID AS cid, a.GR AS gr, b.Gene AS gsymbol, b.GeneID AS ggid, b.Description AS gdes, a.Score AS score FROM ri as a, gene_info as b WHERE a.Gene=b.Gene AND a.CID="C00001" ORDER BY a.Score DESC,a.Gene LIMIT 10;
-	$sth = $dbh->prepare('SELECT a.CID AS cid, a.GR AS gr, b.Gene AS gsymbol, b.GeneID AS ggid, b.Description AS gdes, a.Score AS score FROM ri as a, gene_info as b WHERE a.Gene=b.Gene AND a.CID=? ORDER BY a.Score DESC,a.Gene;');
+	#SELECT a.CID AS cid, a.GR AS gr, b.Gene AS gsymbol, b.GeneID AS ggid, b.Description AS gdes, a.Score AS score FROM regulatory_interaction as a, gene_info as b WHERE a.Gene=b.Gene AND a.CID="C00001" ORDER BY a.Score DESC,a.Gene LIMIT 10;
+	$sth = $dbh->prepare('SELECT a.CID AS cid, a.GR AS gr, b.Gene AS gsymbol, b.GeneID AS ggid, b.Description AS gdes, a.Score AS score FROM regulatory_interaction as a, gene_info as b WHERE a.Gene=b.Gene AND a.CID=? ORDER BY a.Score DESC,a.Gene;');
 	$sth->execute($cid);
 	$json = "";
 	my $count_ri=0;

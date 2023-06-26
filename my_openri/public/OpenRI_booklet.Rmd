@@ -57,7 +57,7 @@ In parallel with the growth in summary-level epi/genomic datasets generated from
 
 - [Mining - Search], an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages; 
 
-- [Mining - Browse], enabling interactive exploration of regulatory interactions through navigating contexts; 
+- [Mining - Browse], navigating contexts (eg organs, tissues, and cell types) to enable interactive exploration of their regulatory interactions; 
 
 - [Mining - RI2Genes], mining the resource to identify regulatory genes (see [Example Output](/app/examples/_tmp_RMD_RI2Genes.html)) from user-input data;
 
@@ -122,7 +122,7 @@ grid.raster(img)
 
 # Mining - Browse
 
-```{r browse, fig.cap="The context browse interfaces for fetching regulatory interactions via navigating contexts, illustrated for the context `C0001: A549_Roadmap (PMID33828297)`. The integers in the hexagons denote sequential clicks. `Top`: the browse page lists contexts for regulatory interactions with different modals, including the modal `Activity-By-Contact (ABC)`. `Bottom-left`: the context-specific page for the context `C0001: A549_Roadmap (PMID33828297)`, which lists its regulatory interactions between genomic regions and genes (each gene hyperlinked to the gene-specific page). `Bottom-right`: the gene-specific page for the gene `ROCK1P1`, which lists its regulatory interactions separately for different modals (this is, `ABC`, `PCHiC` and `QTL`), with each context hyperlinked to the context-specific page.", fig.width=10, fig.height=8.8, echo=FALSE, eval=TRUE, fig.align="center",out.width="100%"}
+```{r browse, fig.cap="The context browse interfaces for fetching regulatory interactions via navigating contexts, illustrated for the context `C0001: A549_Roadmap (PMID33828297)`. The integers in the red hexagons denote sequential clicks. `Top`: the browse page lists contexts for regulatory interactions with different modals, including the modal `Activity-By-Contact (ABC)`. `Bottom-left`: the context-specific page for the context `C0001: A549_Roadmap (PMID33828297)`, which lists its regulatory interactions between genomic regions and genes (each gene hyperlinked to the gene-specific page). `Bottom-right`: the gene-specific page for the gene `ROCK1P1`, which lists its regulatory interactions separately for different modals (this is, `ABC`, `PCHiC` and `QTL`), with each context hyperlinked to the context-specific page.", fig.width=10, fig.height=8.8, echo=FALSE, eval=TRUE, fig.align="center",out.width="100%"}
 library(png)
 library(grid)
 img <- readPNG("booklet.OpenRI.browse.png")
@@ -190,11 +190,11 @@ grid.raster(img)
 
 - `Step 3`: a list of modals (PCHiC, ABC, and QTL).
 
-- `Step 4`: specifying which genes to identify ontology terms based on which ontology.
+- `Step 4`: specifying the top regulatory genes to identify ontology terms based on which ontology.
 
 > **Output**
 
-- [Example Output](/app/examples/_tmp_RMD_RI2Terms.html) includes interactive tables for regulatory genes (and evidence) and ontology terms, as well as  high-quality figures for enriched terms. A summary of input data and the runtime (computed on the server side) is also returned to the users.
+- [Example Output](/app/examples/_tmp_RMD_RI2Terms.html) includes interactive tables for regulatory genes (and evidence) and ontology terms, as well as graphical plots for enriched terms. A summary of input data and the runtime (computed on the server side) is also returned to the users.
 
 <hr>
 
@@ -225,7 +225,7 @@ grid.raster(img)
 <br>
 <hr>
 
-- Under the tab `Output: Graphical Visuals`, two output plots `Dotplot` and `Forest plot` illustrates enriched ontology terms. Also provided are the downloadable PDF files.
+- Under the tab `Output: Plots`, two output plots `Dotplot` and `Forest plot` illustrates enriched ontology terms. Also provided are the downloadable PDF files.
 
 ```{r RI2Terms-results-plots, fig.cap="Dotplot for enriched ontology terms.", fig.width=10, fig.height=9, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
 library(png)

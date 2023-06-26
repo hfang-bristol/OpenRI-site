@@ -375,11 +375,11 @@
 				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Description </dt>
 				<dd><%== $gene_data->{Description} %></dd>
 				
-				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;GeneID</dt>
-				<dd><%== $gene_data->{GeneID} %></dd>
-				
 				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Genomic location</dt>
 				<dd><%== $gene_data->{GeneLoc} %></dd>
+				
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;External links</dt>
+				GeneID: <a href="https://www.ncbi.nlm.nih.gov/gene/<%== $gene_data->{GeneID} %>" target="Entrez"><%== $gene_data->{GeneID} %></a>&nbsp;&nbsp;|&nbsp;&nbsp;AlphaFold: <a href="https://alphafold.ebi.ac.uk/search/text/<%== $gene_data->{Gene} %>?organismScientificName=Homo%20sapiens" target="AlphaFold"><%== $gene_data->{Gene} %></a>
 				
 			</dl>
         </div>
@@ -388,7 +388,7 @@
 	
 	
 	<!-- tables -->
-	% if($rec_anno_abc ne ''){
+	% if($rec_anno_abc ne '' || $rec_anno_pchic ne '' || $rec_anno_qtl ne ''){
 	<div class="panel-group" id="accordion">
 	
 	   % if($rec_anno_abc ne ''){

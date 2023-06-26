@@ -50,7 +50,7 @@
 				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;OpenRI is an open and scalable resource for gene-directed regulatory interactions. It enables interactive exploration of multimodal regulatory interactions, organised into three modals: Activity-By-Contact (ABC) for enhancer-gene maps, Promoter Capture Hi-C (PCHiC), and Quantitative Trait Loci (QTL). OpenRI also provides users with data-mining opportunities inclusive of non-coding genome, including: 
 				<ul>
 				<li><a href="/OpenRI" target="search"><i class="fa fa-search fa-1x"></i>&nbsp;Search</a>, an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages; 
-				<li><a href="/OpenRI/browser" target="browser"><i class="fa fa-safari fa-1x fa-flip-horizontal"></i>&nbsp;Browse</a>, enabling interactive exploration of regulatory interactions through navigating contexts;
+				<li><a href="/OpenRI/browser" target="browser"><i class="fa fa-safari fa-1x fa-flip-horizontal"></i>&nbsp;Browse</a>, navigating contexts (eg organs, tissues, and cell types) to enable interactive exploration of their regulatory interactions;
 				<li><a href="/OpenRI/RI2Genes" target="RI2Genes"><i class="fa fa-tachometer fa-1x fa-flip-horizontal"></i>&nbsp;RI2Genes</a>, mining the resource to identify regulatory genes from user-input data.
 				<li><a href="/OpenRI/RI2Terms" target="RI2Terms"><i class="fa fa-tachometer fa-1x"></i>&nbsp;RI2Terms</a>, mining the resource to identify regulatory genes and ontology terms from user-input data.
 				</ul>
@@ -61,6 +61,12 @@
 				
 				<fieldset>
 				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please refer to <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource. For instructions on how to build its web-server, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a>. Looking further ahead, we are keen on providing outputs in a ChatGPT-style conversational manner.</h5>
+				</fieldset>
+				
+				<br>
+				
+				<fieldset>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;This work receives fundings from National Natural Science Foundation of China [32170663], Shanghai Pujiang Program [21PJ1409600], Program for Professor of Special Appointment (Eastern Scholar) at Shanghai Institutions of Higher Learning, and Innovative Research Team of High-Level Local Universities in Shanghai.</h5>
 				</fieldset>
 				
 				<br>
@@ -323,22 +329,6 @@ mysql> <span class="burgundy_text">DESC</span> ri;
     </ul>
     </font>
     </div>
-
-    
-    <div class="tabbertab">
-    <h2><a>VERSIONS</a></h2>
-    <br>
-    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;June 2023 release</span>
-    &nbsp;&nbsp;
-	<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a>
-	
-	<hr>
-    
-    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;April 2023 release</span>
-    &nbsp;&nbsp;
-	<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202304.sql.gz" download="OpenRIdb_202304.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202304.sql.gz</a>
-    
-    </div>
     
 </div>
 				
@@ -352,7 +342,7 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark3">
 				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="List of funds supporting the development and deployment of the OpenRI database">&nbsp;&nbsp;FUNDING</strong></a>
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="List of news and updates related to OpenRI">&nbsp;&nbsp;NEWS & UPDATES</strong></a>
 				</a>
 			 </h4>
 		  </div>
@@ -360,26 +350,14 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 			<ul>
 	
 			<fieldset>
-				<h5 class="citation_title"><strong>National Natural Science Foundation of China:</strong> 32170663</h5>
-				<p>2022 - 2025</p>
-			</fieldset>
-	
-			<fieldset>
-				<h5 class="citation_title"><strong>Innovative Research Team of High-Level Local Universities in Shanghai</strong></h5>
-				<p>2022 - 2024</p>
-			</fieldset>
-	
-			<fieldset>
-				<h5 class="citation_title"><strong>Program for Professor of Special Appointment at Shanghai Institutions of Higher Learning:</strong> Eastern Scholar</h5>
-				<p>2020 - 2022</p>
+				<h5 class="citation_title"><strong>June 2023</strong></h5>
+				<p>June 2023 release&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a></p>
 			</fieldset>
 			
-			<!--
 			<fieldset>
-				<h5 class="citation_title"><strong>BBSRC Tools and Resources Development Fund:</strong> BB/L018543/1</h5>
-				<p>2014 - 2015</p>
+				<h5 class="citation_title"><strong>April 2023</strong></h5>
+				<p>April 2023 release&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202304.sql.gz" download="OpenRIdb_202304.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202304.sql.gz</a></p>
 			</fieldset>
-			-->
 			
 			<br>
 			</ul>
@@ -391,7 +369,7 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark4">
 				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Publications for primary datasets curated into the OpenRI database">&nbsp;&nbsp;KEY ARTICLES</strong></a>
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Publications for primary datasets curated into the OpenRI database">&nbsp;&nbsp;PRIMARY ARTICLES</strong></a>
 				</a>
 			 </h4>
 		  </div>
@@ -479,7 +457,7 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark5">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-				   <i class="fa fa-plus-circle"></i><strong>&nbsp;&nbsp;CONTACT INFO</strong></a>
+				   <i class="fa fa-plus-circle"></i><strong>&nbsp;&nbsp;CONTACT INFORMATION</strong></a>
 			 </h4>
 		  </div>
 		  <div id="collapse5" class="panel-collapse collapse">
