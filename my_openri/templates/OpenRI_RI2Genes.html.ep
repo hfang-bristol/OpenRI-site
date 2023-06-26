@@ -570,7 +570,7 @@ chr6:163651419-163653419
 					</div>
 				</div>
 				
-				<p><strong>Step 3</strong>: Regulatory genes identified based on which modal (PCHiC, ABC, QTL).</p>
+				<p><strong>Step 3</strong>: Regulatory genes identified based on which modal (ABC, PCHiC, QTL).</p>
 				<div class="form-group">
 					<label class="control-label col-sm-5" for="distance">Modal:</label>
 					<div class="col-sm-7">

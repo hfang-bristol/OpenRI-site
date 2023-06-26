@@ -54,13 +54,20 @@
 				<li><a href="/OpenRI/RI2Genes" target="RI2Genes"><i class="fa fa-tachometer fa-1x fa-flip-horizontal"></i>&nbsp;RI2Genes</a>, mining the resource to identify regulatory genes from user-input data.
 				<li><a href="/OpenRI/RI2Terms" target="RI2Terms"><i class="fa fa-tachometer fa-1x"></i>&nbsp;RI2Terms</a>, mining the resource to identify regulatory genes and ontology terms from user-input data.
 				</ul>
+				Looking further ahead, we are keen on providing outputs in a ChatGPT-style conversational manner.
 				</h5>
 				</fieldset>
 				
 				<br>
 				
 				<fieldset>
-				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please refer to <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource. For instructions on how to build its web-server, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a>. Looking further ahead, we are keen on providing outputs in a ChatGPT-style conversational manner.</h5>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please refer to <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource.</h5>
+				</fieldset>
+				
+				<br>
+				
+				<fieldset>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;For instructions on how to build its web-server, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a>.</h5>
 				</fieldset>
 				
 				<br>
@@ -87,7 +94,7 @@
 		  <div id="collapse2" class="panel-collapse collapse">
 			 <div class = "panel-body">
 			 
-				<h4><a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a><span class="sandy_text">&nbsp;&nbsp;<i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;contains 4 tables, with the schema outlined below:</span></h4>
+				<h4><a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a><span class="sandy_text">&nbsp;&nbsp;<i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;contains 5 tables, with the schema outlined below:</span></h4>
 				
 				<hr>
 				
@@ -124,73 +131,74 @@ gunzip < OpenRIdb_202306.sql.gz | mysql -u root -p OpenRIdb
     <pre class="citation_title">
 mysql> <span class="burgundy_text">USE</span> OpenRIdb;
 mysql> <span class="burgundy_text">SHOW</span> tables;
-+--------------------+
-| Tables_in_openridb |
-+--------------------+
-| context_info       |
-| gene_info          |
-| gr_info            |
-| ri                 |
-+--------------------+
++------------------------+
+| Tables_in_openridb     |
++------------------------+
+| context_info           |
+| gene_info              |
+| gene_term              |
+| gr_info                |
+| regulatory_interaction |
++------------------------+
     </pre>
 	
 	<hr>
     <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Extract genomic regions that interact with the gene 'IL17A' (based on the modal 'PCHiC')</span>
     <pre class="citation_title">
 mysql> <span class="burgundy_text">SELECT</span> a.CID, b.label, a.GR, a.Gene, a.Score 
-<span class="burgundy_text">FROM</span> ri AS a, context_info AS b 
+<span class="burgundy_text">FROM</span> regulatory_interaction AS a, context_info AS b 
 <span class="burgundy_text">WHERE</span> a.CID=b.CID AND b.Modal='PCHiC' AND a.Gene='IL17A'
 <span class="burgundy_text">ORDER BY</span> a.Score DESC;
-+-------+-----------------------------------------------+------------------------+-------+----------+
-| CID   | label                                         | GR                     | Gene  | Score    |
-+-------+-----------------------------------------------+------------------------+-------+----------+
-| C0081 | Aorta (PMID31501517)                          | chr6:50715234-50721151 | IL17A | 0.107967 |
-| C0088 | Fat (PMID31501517)                            | chr6:52021964-52028582 | IL17A | 0.107136 |
-| C0080 | AdrenalGland (PMID31501517)                   | chr6:50138944-50145136 | IL17A | 0.106664 |
-| C0126 | hippocampal (PMID31367015)                    | chr6:52107437-52120696 | IL17A | 0.105868 |
-| C0123 | Trophoblast (PMID31501517)                    | chr6:52121367-52124792 | IL17A | 0.105148 |
-| C0112 | Pancreas (PMID31501517)                       | chr6:52028583-52033567 | IL17A | 0.105094 |
-| C0123 | Trophoblast (PMID31501517)                    | chr6:52874476-52880638 | IL17A | 0.104419 |
-| C0081 | Aorta (PMID31501517)                          | chr6:51983487-51987113 | IL17A | 0.103885 |
-| C0112 | Pancreas (PMID31501517)                       | chr6:51976923-51980357 | IL17A | 0.102618 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52507448-52510680 | IL17A | 0.101935 |
-| C0082 | Bladder (PMID31501517)                        | chr6:52097457-52102314 | IL17A | 0.101872 |
-| C0123 | Trophoblast (PMID31501517)                    | chr6:51930792-51937411 | IL17A | 0.101258 |
-| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A |  0.10104 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52548793-52551154 | IL17A | 0.100978 |
-| C0097 | LCL (PMID31501517)                            | chr6:50706937-50711709 | IL17A | 0.100911 |
-| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52527279-52528288 | IL17A |  0.10082 |
-| C0111 | Ovary (PMID31501517)                          | chr6:52097457-52102314 | IL17A |  0.10081 |
-| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A | 0.100758 |
-| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A | 0.100661 |
-| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52564858-52565095 | IL17A | 0.100646 |
-| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52529945-52533082 | IL17A | 0.100577 |
-| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52565096-52568603 | IL17A | 0.100483 |
-| C0109 | Neutrophils (PMID27863249)                    | chr6:50770604-50780906 | IL17A | 0.100481 |
-| C0109 | Neutrophils (PMID27863249)                    | chr6:50796768-50800786 | IL17A | 0.100452 |
-| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52483390-52486722 | IL17A | 0.100446 |
-| C0123 | Trophoblast (PMID31501517)                    | chr6:51998371-52001727 | IL17A |  0.10042 |
-| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100405 |
-| C0123 | Trophoblast (PMID31501517)                    | chr6:52168413-52176918 | IL17A | 0.100397 |
-| C0099 | Liver (PMID31501517)                          | chr6:51365528-51370740 | IL17A | 0.100377 |
-| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52564858-52565095 | IL17A | 0.100365 |
-| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A | 0.100328 |
-| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A | 0.100303 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52557253-52561729 | IL17A | 0.100272 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52564858-52565095 | IL17A | 0.100265 |
-| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100223 |
-| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52506678-52507447 | IL17A | 0.100212 |
-| C0109 | Neutrophils (PMID27863249)                    | chr6:50766439-50770603 | IL17A | 0.100157 |
-| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A |  0.10015 |
-| C0127 | motor (PMID31367015)                          | chr6:52120697-52122033 | IL17A | 0.100142 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52583876-52584149 | IL17A |  0.10012 |
-| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A | 0.100092 |
-| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52474654-52478765 | IL17A | 0.100061 |
-| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52608673-52609968 | IL17A | 0.100047 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52537239-52538716 | IL17A | 0.100034 |
-| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52565096-52568603 | IL17A | 0.100026 |
-| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A | 0.100022 |
-+-------+-----------------------------------------------+------------------------+-------+----------+
++-------+-----------------------------------------------+------------------------+-------+--------------+
+| CID   | label                                         | GR                     | Gene  | Score        |
++-------+-----------------------------------------------+------------------------+-------+--------------+
+| C0081 | Aorta (PMID31501517)                          | chr6:50715234-50721151 | IL17A |   0.00886063 |
+| C0088 | Fat (PMID31501517)                            | chr6:52021964-52028582 | IL17A |   0.00793775 |
+| C0080 | AdrenalGland (PMID31501517)                   | chr6:50138944-50145136 | IL17A |   0.00741363 |
+| C0126 | hippocampal (PMID31367015)                    | chr6:52107437-52120696 | IL17A |   0.00652897 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52121367-52124792 | IL17A |   0.00572892 |
+| C0112 | Pancreas (PMID31501517)                       | chr6:52028583-52033567 | IL17A |   0.00566848 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52874476-52880638 | IL17A |   0.00491858 |
+| C0081 | Aorta (PMID31501517)                          | chr6:51983487-51987113 | IL17A |   0.00432594 |
+| C0112 | Pancreas (PMID31501517)                       | chr6:51976923-51980357 | IL17A |   0.00291745 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52507448-52510680 | IL17A |   0.00215937 |
+| C0082 | Bladder (PMID31501517)                        | chr6:52097457-52102314 | IL17A |   0.00208858 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:51930792-51937411 | IL17A |   0.00140648 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A |   0.00116485 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52548793-52551154 | IL17A |   0.00109584 |
+| C0097 | LCL (PMID31501517)                            | chr6:50706937-50711709 | IL17A |   0.00102056 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52527279-52528288 | IL17A |  0.000919697 |
+| C0111 | Ovary (PMID31501517)                          | chr6:52097457-52102314 | IL17A |  0.000908583 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A |  0.000851565 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52516121-52519136 | IL17A |  0.000743387 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52564858-52565095 | IL17A |  0.000726709 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52529945-52533082 | IL17A |  0.000650316 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52565096-52568603 | IL17A |  0.000545248 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50770604-50780906 | IL17A |  0.000543862 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50796768-50800786 | IL17A |  0.000511279 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52483390-52486722 | IL17A |  0.000504013 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:51998371-52001727 | IL17A |  0.000475964 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A |  0.000459409 |
+| C0123 | Trophoblast (PMID31501517)                    | chr6:52168413-52176918 | IL17A |  0.000450113 |
+| C0099 | Liver (PMID31501517)                          | chr6:51365528-51370740 | IL17A |  0.000427498 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52564858-52565095 | IL17A |  0.000414165 |
+| C0108 | Naive_CD8_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A |  0.000373828 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A |   0.00034523 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52557253-52561729 | IL17A |  0.000311453 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52564858-52565095 | IL17A |  0.000303343 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A |  0.000257019 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52506678-52507447 | IL17A |  0.000244341 |
+| C0109 | Neutrophils (PMID27863249)                    | chr6:50766439-50770603 | IL17A |  0.000182812 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52551155-52557252 | IL17A |  0.000175933 |
+| C0127 | motor (PMID31367015)                          | chr6:52120697-52122033 | IL17A |  0.000166591 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52583876-52584149 | IL17A |  0.000141738 |
+| C0107 | Naive_CD4_T_cells (PMID27863249)              | chr6:52582960-52583875 | IL17A |  0.000110967 |
+| C0122 | Total_CD8_T_cells (PMID27863249)              | chr6:52474654-52478765 | IL17A | 0.0000768145 |
+| C0079 | Activated_total_CD4_T_cells (PMID27863249)    | chr6:52608673-52609968 | IL17A | 0.0000613927 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52537239-52538716 | IL17A | 0.0000469573 |
+| C0110 | Nonactivated_total_CD4_T_cells (PMID27863249) | chr6:52565096-52568603 | IL17A | 0.0000382299 |
+| C0121 | Total_CD4_T_cells (PMID27863249)              | chr6:52507448-52510680 | IL17A |  0.000033339 |
++-------+-----------------------------------------------+------------------------+-------+--------------+
     </pre>
     </div>
     
@@ -206,10 +214,10 @@ mysql> <span class="burgundy_text">DESC</span> context_info;
 +----------+---------------------------+------+-----+---------+-------+
 | Field    | Type                      | Null | Key | Default | Extra |
 +----------+---------------------------+------+-----+---------+-------+
-| CID      | varchar(5)                | NO   | UNI | NULL    |       |
-| Modal    | enum('ABC','PCHiC','QTL') | NO   | PRI | NULL    |       |
-| Context  | varchar(100)              | NO   | PRI | NULL    |       |
-| num      | int unsigned              | NO   |     | 0       |       |
+| CID      | varchar(5)                | NO   | PRI | NULL    |       |
+| Modal    | enum('ABC','PCHiC','QTL') | NO   | MUL | NULL    |       |
+| Context  | varchar(100)              | NO   | MUL | NULL    |       |
+| num_ri   | int unsigned              | NO   |     | 0       |       |
 | num_gene | int unsigned              | NO   |     | 0       |       |
 | label    | varchar(100)              | NO   | MUL | NULL    |       |
 | pmid     | int unsigned              | NO   |     | 0       |       |
@@ -220,7 +228,7 @@ mysql> <span class="burgundy_text">DESC</span> context_info;
      <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
      <li> The <span style="text-decoration: underline;">Modal</span> column is the modal for regulatory interactions</li>
      <li> The <span style="text-decoration: underline;">Context</span> column is the name of contexts</li>
-     <li> The <span style="text-decoration: underline;">num</span> column is the number of regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">num_ri</span> column is the number of regulatory interactions</li>
      <li> The <span style="text-decoration: underline;">num_gene</span> column is the number of genes</li>
      <li> The <span style="text-decoration: underline;">label</span> column is the human-friendly description of contexts</li>
      <li> The <span style="text-decoration: underline;">pmid</span> column is PubMed ID for this published dataset</li>
@@ -228,6 +236,62 @@ mysql> <span class="burgundy_text">DESC</span> context_info;
     </font>
     </div>
 
+
+    <div class="tabbertab">
+    <h2><a>regulatory_interaction</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about regulatory interactions</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_regulatory_interaction.txt.gz" download="Table_regulatory_interaction.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_regulatory_interaction.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> ri;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| CID   | varchar(5)   | NO   | PRI | NULL    |                |
+| GR    | varchar(50)  | NO   | PRI | NULL    |                |
+| Gene  | varchar(100) | NO   | PRI | NULL    |                |
+| Score | double       | YES  |     | NULL    |                |
+| auto  | int          | NO   | UNI | NULL    | auto_increment |
++-------+--------------+------+-----+---------+----------------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
+     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
+     <li> The <span style="text-decoration: underline;">Gene</span> column is the official gene symbol</li>
+     <li> The <span style="text-decoration: underline;">Score</span> column is the score for regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
+    </ul>
+    </font>
+    </div>
+
+
+    <div class="tabbertab">
+    <h2><a>gr_info</a></h2>
+    <br>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about genomic regions</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_gr_info.txt.gz" download="Table_gr_info.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_gr_info.txt.gz</a></span>
+    
+    <pre class="citation_title">
+mysql> <span class="burgundy_text">DESC</span> gr_info;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| GR    | varchar(50)  | NO   | PRI | NULL    |                |
+| GRlen | int unsigned | NO   |     | 0       |                |
+| auto  | int          | NO   | UNI | NULL    | auto_increment |
++-------+--------------+------+-----+---------+----------------+
+    </pre>
+    <font size=3>
+    <ul>
+     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
+     <li> The <span style="text-decoration: underline;">GRlen</span> column is the genomic region length (calculated based on GR)</li>
+     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
+    </ul>
+    </font>
+    </div>
+    
 
     <div class="tabbertab">
     <h2><a>gene_info</a></h2>
@@ -245,9 +309,6 @@ mysql> <span class="burgundy_text">DESC</span> gene_info;
 | GeneLoc     | varchar(50)  | NO   |     | NULL    |                |
 | GeneLen     | int unsigned | NO   |     | 0       |                |
 | Description | varchar(255) | NO   |     | NULL    |                |
-| chr         | int unsigned | NO   |     | 0       |                |
-| start       | int unsigned | NO   |     | 0       |                |
-| end         | int unsigned | NO   |     | 0       |                |
 | auto        | int          | NO   | UNI | NULL    | auto_increment |
 +-------------+--------------+------+-----+---------+----------------+
     </pre>
@@ -258,9 +319,6 @@ mysql> <span class="burgundy_text">DESC</span> gene_info;
      <li> The <span style="text-decoration: underline;">GeneLoc</span> column is the genomic location (derived from UCSC known genes)</li>
      <li> The <span style="text-decoration: underline;">GeneLen</span> column is the gene length (calculated based on GeneLoc)</li>
      <li> The <span style="text-decoration: underline;">Description</span> column is the official gene description</li>
-     <li> The <span style="text-decoration: underline;">chr</span> column is the chromosome (23 for X and 24 for Y)</li>
-     <li> The <span style="text-decoration: underline;">start</span> column is the start coordinate of GeneLoc</li>
-     <li> The <span style="text-decoration: underline;">end</span> column is the end coordinate of GeneLoc</li>
      <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
     </ul>
     </font>
@@ -268,67 +326,34 @@ mysql> <span class="burgundy_text">DESC</span> gene_info;
 
     
     <div class="tabbertab">
-    <h2><a>gr_info</a></h2>
+    <h2><a>gene_term</a></h2>
     <br>
-    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about genomic regions</span>
-    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_gr_info.txt.gz" download="Table_gr_info.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_gr_info.txt.gz</a></span>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about gene annotations using ontology terms</span>
+    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_gene_term.txt.gz" download="Table_gene_term.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_gene_term.txt.gz</a></span>
     
     <pre class="citation_title">
-mysql> <span class="burgundy_text">DESC</span> gr_info;
-+-------+--------------+------+-----+---------+----------------+
-| Field | Type         | Null | Key | Default | Extra          |
-+-------+--------------+------+-----+---------+----------------+
-| GR    | varchar(50)  | NO   | PRI | NULL    |                |
-| GRlen | int unsigned | NO   |     | 0       |                |
-| chr   | int unsigned | NO   |     | 0       |                |
-| start | int unsigned | NO   |     | 0       |                |
-| end   | int unsigned | NO   |     | 0       |                |
-| auto  | int          | NO   | UNI | NULL    | auto_increment |
-+-------+--------------+------+-----+---------+----------------+
-    </pre>
-    <font size=3>
-    <ul>
-     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
-     <li> The <span style="text-decoration: underline;">GRlen</span> column is the genomic region length (calculated based on GR)</li>
-     <li> The <span style="text-decoration: underline;">chr</span> column is the chromosome (23 for X and 24 for Y)</li>
-     <li> The <span style="text-decoration: underline;">start</span> column is the start coordinate of GR</li>
-     <li> The <span style="text-decoration: underline;">end</span> column is the end coordinate of GR</li>
-     <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
-    </ul>
-    </font>
-    </div>
-
-
-    <div class="tabbertab">
-    <h2><a>ri</a></h2>
-    <br>
-    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;A table about regulatory interactions</span>
-    <span class="sandy_text">&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/Table_ri.txt.gz" download="Table_ri.txt.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> Table_ri.txt.gz</a></span>
-    
-    <pre class="citation_title">
-mysql> <span class="burgundy_text">DESC</span> ri;
+mysql> <span class="burgundy_text">DESC</span> gene_info;
 +----------+--------------+------+-----+---------+----------------+
 | Field    | Type         | Null | Key | Default | Extra          |
 +----------+--------------+------+-----+---------+----------------+
-| CID      | varchar(5)   | NO   | PRI | NULL    |                |
-| GR       | varchar(50)  | NO   | PRI | NULL    |                |
 | Gene     | varchar(100) | NO   | PRI | NULL    |                |
-| Score    | double       | YES  |     | NULL    |                |
-| Distance | int          | YES  |     | NULL    |                |
+| Ontology | char(8)      | NO   | PRI | NULL    |                |
+| TermID   | varchar(50)  | NO   | PRI | NULL    |                |
+| Name     | varchar(255) | NO   |     | NULL    |                |
 | auto     | int          | NO   | UNI | NULL    | auto_increment |
 +----------+--------------+------+-----+---------+----------------+
     </pre>
     <font size=3>
     <ul>
-     <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
-     <li> The <span style="text-decoration: underline;">GR</span> column is the genomic region</li>
      <li> The <span style="text-decoration: underline;">Gene</span> column is the official gene symbol</li>
-     <li> The <span style="text-decoration: underline;">Score</span> column is the score for regulatory interactions</li>
-     <li> The <span style="text-decoration: underline;">Distance</span> column is the distance between GR and Gene</li>
+     <li> The <span style="text-decoration: underline;">Ontology</span> column is the Ontology</li>
+     <li> The <span style="text-decoration: underline;">TermID</span> column is the ontology term ID</li>
+     <li> The <span style="text-decoration: underline;">Name</span> column is the ontology term name</li>
      <li> The <span style="text-decoration: underline;">auto</span> column is an increasing sequence of unique numbers, collectively acting as a primary key</li>
     </ul>
     </font>
     </div>
+    
     
 </div>
 				
@@ -352,11 +377,6 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 			<fieldset>
 				<h5 class="citation_title"><strong>June 2023</strong></h5>
 				<p>June 2023 release&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202306.sql.gz" download="OpenRIdb_202306.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202306.sql.gz</a></p>
-			</fieldset>
-			
-			<fieldset>
-				<h5 class="citation_title"><strong>April 2023</strong></h5>
-				<p>April 2023 release&nbsp;&nbsp;<a class="btn btn-primary btn-sm active" role="button" href="/app/img/OpenRIdb_202304.sql.gz" download="OpenRIdb_202304.sql.gz"><i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i> OpenRIdb_202304.sql.gz</a></p>
 			</fieldset>
 			
 			<br>
@@ -445,6 +465,14 @@ mysql> <span class="burgundy_text">DESC</span> ri;
 			<p><em>Cell</em> 2016</p>
 			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1016/j.cell.2016.09.037" target="10.1016/j.cell.2016.09.037">10.1016/j.cell.2016.09.037</a>
 			<span class="__dimensions_badge_embed__" data-doi="10.1016/j.cell.2016.09.037" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
+			</fieldset>
+			<br>
+			
+			<fieldset>
+			<h5 class="citation_title">XGR software for enhanced interpretation of genomic summary data, illustrated by application to immunological traits</h5>
+			<p><em>Genome Medicine</em> 2016</p>
+			<strong>DOI:</strong> <a href="http://dx.doi.org/10.1186/s13073-016-0384-y" target="10.1186/s13073-016-0384-y">10.1186/s13073-016-0384-y</a>
+			<span class="__dimensions_badge_embed__" data-doi="10.1186/s13073-016-0384-y" data-style="small_rectangle" data-legend="hover-right" data-hide-zero-citations="true"></span>
 			</fieldset>
 			<br>
 			

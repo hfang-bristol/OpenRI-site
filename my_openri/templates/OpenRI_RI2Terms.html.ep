@@ -110,21 +110,13 @@ my $crosslinks={
 	QTL_pQTL_PMID34857953 => "Plasma pQTL (n=1 context; PMID34857953)",
 };
 
-my $default_obo='KEGGEnvironmentalOrganismal';
+my $default_obo='GOBP';
 $i=0;
 my $obo_order;
 $obo_order->{"GOBP"}=$i++;
 $obo_order->{"GOMF"}=$i++;
 $obo_order->{"HPPA"}=$i++;
-$obo_order->{"MP"}=$i++;
 $obo_order->{"MDODD"}=$i++;
-$obo_order->{"EF"}=$i++;
-$obo_order->{"KEGG"}=$i++;
-$obo_order->{"REACTOME"}=$i++;
-$obo_order->{"MitoPathway"}=$i++;
-$obo_order->{"DGIdb"}=$i++;
-$obo_order->{"Bucket"}=$i++;
-$obo_order->{"ChEMBL"}=$i++;
 $obo_order->{"SF"}=$i++;
 $obo_order->{"Pfam"}=$i++;
 $obo_order->{"IPR"}=$i++;
@@ -134,18 +126,7 @@ my $obos={
     GOMF => "Gene Ontology Molecular Function (GOMF)",
     
     HPPA => "Human Phenotype Ontology (HPO)",
-    MP => "Mammalian Phenotype Ontology (MPO)",
-
     MDODD => "Mondo Disease Ontology (MONDO)",
-    EF => "Experimental Factor Ontology (EFO)",
-
-    KEGG => "KEGG pathways (KEGG)",
-    REACTOME => "REACTOME pathways (REACTOME)",
-	MitoPathway => "MitoPathway pathways (MITOPATH)",
-    
-    DGIdb => "DGIdb druggable categories (DGIdb)",
-    Bucket => "Target tractability buckets (Bucket)",
-    ChEMBL => "ChEMBL drug indications (ChEMBL)",
 
     SF => "SCOP superfamily domains (SCOP)",
     Pfam => "Pfam domains (Pfam)",
@@ -613,7 +594,7 @@ chr6:163651419-163653419
 					</div>
 				</div>
 				
-				<p><strong>Step 3</strong>: Regulatory genes identified based on which modal (PCHiC, ABC, QTL).</p>
+				<p><strong>Step 3</strong>: Regulatory genes identified based on which modal (ABC, PCHiC, QTL).</p>
 				<div class="form-group">
 					<label class="control-label col-sm-5" for="distance">Modal:</label>
 					<div class="col-sm-7">
@@ -642,7 +623,7 @@ chr6:163651419-163653419
 					</div>
 				</div>
 
-				<p><strong>Step 4</strong>: Ontology terms identified based on which genes using which ontology (functions, phenotypes, etc).</p>
+				<p><strong>Step 4</strong>: Ontology terms identified based on which genes using which ontology (functions, diseases, etc).</p>
 				<!-- num genes -->
 				<div class="form-group">
 					<label class="control-label col-sm-5" for="obo">Genes:</label>
@@ -665,27 +646,15 @@ chr6:163651419-163653419
 							% foreach my $obo (sort{$obo_order->{$a} <=> $obo_order->{$b}} keys %$obo_order) {
 							% my $selected = ($obo eq $default_obo)? ' SELECTED':'';
 							% if ($obo eq 'GOBP'){
-								<OPTGROUP LABEL="Functions">
+								<OPTGROUP LABEL="Processes & Functions">
 								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>
 							% }elsif ($obo eq 'HPPA'){
 								</OPTGROUP>
-								<OPTGROUP LABEL="Phenotypes">
-								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>	
-							% }elsif ($obo eq 'MDODD'){
-								</OPTGROUP>
-								<OPTGROUP LABEL="Diseases">
-								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>
-							% }elsif ($obo eq 'KEGG'){
-								</OPTGROUP>
-								<OPTGROUP LABEL="Pathways">
-								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>
-							% }elsif ($obo eq 'DGIdb'){
-								</OPTGROUP>
-								<OPTGROUP LABEL="Drugs">
+								<OPTGROUP LABEL="Phenotypes & Diseases">
 								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>
 							% }elsif ($obo eq 'SF'){
 								</OPTGROUP>
-								<OPTGROUP LABEL="Domains">
+								<OPTGROUP LABEL="Protein Domains">
 								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>
 							% }elsif ($obo eq 'IPR'){
 								<OPTION VALUE="<%= $obo %>"<%= $selected %>><%== $obos->{$obo} %></OPTION>

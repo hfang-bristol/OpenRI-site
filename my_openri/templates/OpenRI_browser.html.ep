@@ -105,7 +105,7 @@
 							}
 						},
 						{
-							mData:"num",
+							mData:"num_ri",
 							bSearchable: true,
 							sWidth: "10%",
 							mRender: function(data, type, full) {
@@ -172,7 +172,7 @@
 							}
 						},
 						{
-							mData:"num",
+							mData:"num_ri",
 							bSearchable: true,
 							sWidth: "10%",
 							mRender: function(data, type, full) {
@@ -239,7 +239,7 @@
 							}
 						},
 						{
-							mData:"num",
+							mData:"num_ri",
 							bSearchable: true,
 							sWidth: "10%",
 							mRender: function(data, type, full) {

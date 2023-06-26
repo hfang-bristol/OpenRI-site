@@ -38,9 +38,9 @@ q('no')
 
 
 ## **Input Information**
-A runtime of ``r ls_rmd$runtime`` [``r format(ls_rmd$sT, "%a %b %d %X %Y")`` - ``r format(ls_rmd$eT, "%a %b %d %X %Y")``], time zone (``r Sys.timezone()``).
+A runtime of ``r ls_rmd$runtime`` (``r format(ls_rmd$sT, "%a %b %d %X %Y")`` - ``r format(ls_rmd$eT, "%a %b %d %X %Y")``), time zone (``r Sys.timezone()``).
 
-> **Interactive table** for user-input genomic regions (n=`r nrow(ls_rmd$data_input)` analysed). The table includes three columns: 1st column `Input` for input genomic regions in the format of `chr:start-end` (the genome build `hg19`), 2nd `Chr` for the chromosome, 3rd `Start` for the start coordinate, 4th `End` for the end coordinate, and 5th `Length` for the region length (bp).
+> **Interactive table** for user-input genomic regions (n=``r nrow(ls_rmd$data_input)`` analysed). The table includes three columns: 1st column `Input` for input genomic regions in the format of `chr:start-end` (the genome build `hg19`), 2nd `Chr` for the chromosome, 3rd `Start` for the start coordinate, 4th `End` for the end coordinate, and 5th `Length` for the region length (bp).
 
 ```{r}
 data_input <- ls_rmd$data_input %>% mutate(chr=str_replace_all(dGR,':.*',''), start=str_replace_all(dGR,'.*:|-.*',''), end=str_replace_all(dGR,'.*-','')) %>% transmute(`Input`=dGR, Chromosome=chr, Start=start, End=end, Length=as.numeric(end)-as.numeric(start) + 1)
@@ -52,7 +52,7 @@ data_input %>% DT::datatable(options=list(pageLength=5,searchHighlight=T,dom='Bf
 ## **Output: Regulatory Genes**
 This tab features two output tables: `Regulatory Gene table` and `Evidence table`.
 
-> **Regulatory Gene table** contains information on regulatory genes (n=`r ls_rmd$num_LG`, identified from input genomic regions), including the column `GScores` (ranged from 1 to 10) that quantifies the degree to which genes are likely regulated by input genomic regions. `Regulatory genes` are sorted by their gene scores and are hyperlinked to `gene-specific information page`. Please refer to **`Evidence table`** for details on context-specific evidence.
+> **Regulatory Gene table** contains information on regulatory genes (n=``r ls_rmd$num_LG``, identified from input genomic regions), including the column `GScores` (ranged `from 1 to 10`) that quantifies the degree to which genes are likely regulated by input genomic regions. `Regulatory genes` are sorted by their gene scores and are hyperlinked to `gene-specific information page`. Please refer to **`Evidence table`** for details on context-specific evidence.
 
 ```{r}
 filename <- ls_rmd$xlsx_LG
@@ -68,7 +68,7 @@ tb %>% DT::datatable(options=list(pageLength=5,searchHighlight=T,dom='Bfrtip',bu
 
 <br>
 
-> **Evidence table** displays information about the genomic regions (listed under the column `GR`) that overlap the input genomic regions (listed under the column `Input`). The overlapped regions are used to define regulatory genes (listed under the column `Regulatory genes`) based on the evidence provided (see the column `Evidence`). The column `Context` indicates the contexts, that is, the prefix `PCHiC_` for contexts under modal `PCHIC (promoter capture Hi-C)`, the prefix `ABC_` for contexts under modal `ABC (activity-by-contact)`, and the prefix `QTL_` for contexts under modal `QTL (quantitative trait locus)`.
+> **Evidence table** displays information about the genomic regions (listed under the column `GR`) that overlap the input genomic regions (listed under the column `Input`). The overlapped regions are used to define regulatory genes (listed under the column `Regulatory genes`) based on the evidence provided (see the column `Evidence`). The column `Context` indicates the contexts: the prefix `ABC_` for contexts under the modal `ABC (Activity-By-Contact)`, the prefix `PCHiC_` for contexts under the modal `PCHIC (Promoter Capture Hi-C)`, and the prefix `QTL_` for contexts under the modal `QTL (Quantitative Trait Locus)`.
 
 ```{r}
 filename <- ls_rmd$xlsx_LG_evidence

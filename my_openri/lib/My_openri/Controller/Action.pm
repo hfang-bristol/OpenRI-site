@@ -117,7 +117,7 @@ sub index {
 	# realtime
 	################
 	my $datestring = strftime "%Y-%m-%d", localtime;
-	$sth = $dbh->prepare('select Modal,CID,num from context_info;');
+	$sth = $dbh->prepare('select Modal,CID,num_ri from context_info;');
 	$sth->execute();
 	my %modal;
 	my $count_cid=0;
@@ -329,7 +329,7 @@ sub OpenRI_modal_cid {
 	# cid_data
 	##############
 	#SELECT CID,Modal,Context,num,num_gene,label,pmid FROM context_info WHERE CID="C0001" LIMIT 10;
-	$sth = $dbh->prepare( 'SELECT CID,Modal,Context,num,num_gene,label,pmid FROM context_info WHERE CID=?;' );
+	$sth = $dbh->prepare( 'SELECT CID,Modal,Context,num_ri,num_gene,label,pmid FROM context_info WHERE CID=?;' );
 	$sth->execute($cid);
 	if($sth->rows > 0){
 		$cid_data=$sth->fetchrow_hashref;
@@ -452,7 +452,7 @@ sub OpenRI_browser {
 	################
 	# ABC
 	################
-	$sth = $dbh->prepare('select Modal,Context,CID,label,num,num_gene from context_info where Modal="ABC";');
+	$sth = $dbh->prepare('select Modal,Context,CID,label,num_ri,num_gene from context_info where Modal="ABC";');
 	$sth->execute();
 	if($sth->rows>0){
 		my @data;
@@ -462,7 +462,7 @@ sub OpenRI_browser {
 			$rec->{Context}=$row[1];
 			$rec->{CID}="<a href='/OpenRI/abc/".$row[2]."' target='_blank'><i class='fa fa-copyright fa-1x'></i>&nbsp;&nbsp;".$row[2]."</a>";
 			$rec->{label}=$row[3];
-			$rec->{num}=$row[4];
+			$rec->{num_ri}=$row[4];
 			$rec->{num_gene}=$row[5];
 			
 			push @data,$rec;
@@ -476,7 +476,7 @@ sub OpenRI_browser {
 	################
 	# PCHiC
 	################
-	$sth = $dbh->prepare('select Modal,Context,CID,label,num,num_gene from context_info where Modal="PCHiC";');
+	$sth = $dbh->prepare('select Modal,Context,CID,label,num_ri,num_gene from context_info where Modal="PCHiC";');
 	$sth->execute();
 	if($sth->rows>0){
 		my @data;
@@ -486,7 +486,7 @@ sub OpenRI_browser {
 			$rec->{Context}=$row[1];
 			$rec->{CID}="<a href='/OpenRI/pchic/".$row[2]."' target='_blank'><i class='fa fa-copyright fa-1x'></i>&nbsp;&nbsp;".$row[2]."</a>";
 			$rec->{label}=$row[3];
-			$rec->{num}=$row[4];
+			$rec->{num_ri}=$row[4];
 			$rec->{num_gene}=$row[5];
 			
 			push @data,$rec;
@@ -500,7 +500,7 @@ sub OpenRI_browser {
 	################
 	# QTL
 	################
-	$sth = $dbh->prepare('select Modal,Context,CID,label,num,num_gene from context_info where Modal="QTL";');
+	$sth = $dbh->prepare('select Modal,Context,CID,label,num_ri,num_gene from context_info where Modal="QTL";');
 	$sth->execute();
 	if($sth->rows>0){
 		my @data;
@@ -510,7 +510,7 @@ sub OpenRI_browser {
 			$rec->{Context}=$row[1];
 			$rec->{CID}="<a href='/OpenRI/qtl/".$row[2]."' target='_blank'><i class='fa fa-copyright fa-1x'></i>&nbsp;&nbsp;".$row[2]."</a>";
 			$rec->{label}=$row[3];
-			$rec->{num}=$row[4];
+			$rec->{num_ri}=$row[4];
 			$rec->{num_gene}=$row[5];
 			
 			push @data,$rec;
@@ -525,7 +525,7 @@ sub OpenRI_browser {
 	# realtime
 	################
 	my $datestring = strftime "%Y-%m-%d", localtime;
-	$sth = $dbh->prepare('select Modal,CID,num from context_info;');
+	$sth = $dbh->prepare('select Modal,CID,num_ri from context_info;');
 	$sth->execute();
 	my %modal;
 	my $count_cid=0;
