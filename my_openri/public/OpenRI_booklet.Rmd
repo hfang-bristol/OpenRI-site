@@ -43,7 +43,7 @@ grid.raster(img)
 
 ## Needs
 
-Most available interactions are generated/curated between genes (or proteins), and regulatory interactions involving non-coding genome are less studied, both in terms of resources and analyses. The OpenRI resource addresses these needs, including manual curation of gene-directed regulatory interactions across a wide range of contexts, and supporting their use for data mining inclusive of non-coding genome.
+Most available interactions are generated or curated between genes (or proteins), and regulatory interactions involving non-coding regions of the genome are less studied, both in terms of resources and utilities. The OpenRI resource addresses these needs, including manual curation of gene-directed regulatory interactions across a wide range of contexts (eg organs, tissues, and cell types), and supporting their use for data mining inclusive of non-coding genome.
 
 
 ## Contents
@@ -59,9 +59,9 @@ In parallel with the growth in summary-level epi/genomic datasets generated from
 
 - [Mining - Browse], navigating contexts (eg organs, tissues, and cell types) to enable interactive exploration of their regulatory interactions; 
 
-- [Mining - RI2Genes], mining the resource to identify regulatory genes (see [Example Output](/app/examples/_tmp_RMD_RI2Genes.html)) from user-input data;
+- [Mining - RI2Genes], mining the resource to identify potential regulatory genes (see [Example Output](/app/examples/_tmp_RMD_RI2Genes.html)) from user-input data;
 
-- [Mining - RI2Terms], mining the resource to identify regulatory genes and ontology terms (see [Example Output](/app/examples/_tmp_RMD_RI2Terms.html)) from user-input data.
+- [Mining - RI2Terms], mining the resource to identify potential regulatory genes and enriched ontology terms (see [Example Output](/app/examples/_tmp_RMD_RI2Terms.html)) from user-input data.
 
 
 
@@ -94,7 +94,7 @@ grid.raster(img)
 
 ## Mobile 
 
-The OpenRI web-server is developed being mobile-first and responsive (`frontend`), while a next-generation Perl web framework `backend` enables real-time browsing and mining of the OpenRI resource.
+The OpenRI web-server is developed to be mobile-first and responsive (`frontend`), while a next-generation Perl web framework `backend` enables real-time browsing and mining of the OpenRI resource.
 
 <hr>
 
@@ -112,7 +112,7 @@ The faceted search is a mining hub, providing hyperlinks from the search results
 
 <hr>
 
-```{r search, fig.cap="Faceted search enabling centralised data-mining opportunities of the OpenRI resource.", fig.width=10, fig.height=4.3, echo=FALSE, eval=T, fig.align="center",out.width="100%"}
+```{r search, fig.cap="Faceted search enables centralised data-mining opportunities of the OpenRI resource.", fig.width=10, fig.height=4.3, echo=FALSE, eval=T, fig.align="center",out.width="100%"}
 library(png)
 library(grid)
 img <- readPNG("booklet.OpenRI.search.png")
@@ -136,9 +136,9 @@ grid.raster(img)
 
 > **Input**
 
-- `Step 1` and `Step 2`: a list of user-input genomic regions, together with the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
+- `Step 1` and `Step 2`: Enter a list of user-input genomic regions, and specify the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
 
-- `Step 3`: a list of modals (PCHiC, ABC, and QTL).
+- `Step 3`: Select from a list of contexts under different modals (PCHiC, ABC, and QTL).
 
 > **Output**
 
@@ -159,7 +159,7 @@ grid.raster(img)
 
 - Under the tab `Input Information`, `Interactive table` lists user-input genomic regions.
 
-```{r RI2Genes-results-input, fig.cap="The user-input data under the tab `Input Information` returned for the exploration.", fig.width=10, fig.height=6.5, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+```{r RI2Genes-results-input, fig.cap="A summary table of the user-input data under the tab `Input Information` returned for the exploration.", fig.width=10, fig.height=6.5, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
 library(png)
 library(grid)
 img <- readPNG("booklet.OpenRI.RI2Genes.results_input.png")
@@ -186,11 +186,11 @@ grid.raster(img)
 
 > **Input**
 
-- `Step 1` and `Step 2`: a list of user-input genomic regions, together with the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
+- `Step 1` and `Step 2`: Enter a list of user-input genomic regions, and specify the reference genome build. Please make sure that the input genomic coordinates (`Step 1`) are consistent with the specified genome build (`Step 2`).
 
-- `Step 3`: a list of modals (PCHiC, ABC, and QTL).
+- `Step 3`: Select from a list of contexts under different modals (PCHiC, ABC, and QTL).
 
-- `Step 4`: specifying the top regulatory genes to identify ontology terms based on which ontology.
+- `Step 4`: Specify the top regulatory genes and select from a list of ontologies to identify enriched ontology terms.
 
 > **Output**
 
@@ -215,7 +215,7 @@ grid.raster(img)
 
 - Under the tab `Output: Ontology Terms`, `Ontology Term table` displays enriched ontology terms.
 
-```{r RI2Terms-results-terms, fig.cap="Ontology Term table listing enriched ontology terms under the tab `Output: Ontology Terms`.", fig.width=10, fig.height=9.2, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
+```{r RI2Terms-results-terms, fig.cap="Ontology Term table lists enriched ontology terms under the tab `Output: Ontology Terms`.", fig.width=10, fig.height=9.2, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
 library(png)
 library(grid)
 img <- readPNG("booklet.OpenRI.RI2Terms.results_terms.png")
@@ -225,7 +225,7 @@ grid.raster(img)
 <br>
 <hr>
 
-- Under the tab `Output: Plots`, two output plots `Dotplot` and `Forest plot` illustrates enriched ontology terms. Also provided are the downloadable PDF files.
+- Under the tab `Output: Plots`, two output plots `Dotplot` and `Forest plot` illustrate enriched ontology terms. Also provided are the downloadable PDF files.
 
 ```{r RI2Terms-results-plots, fig.cap="Dotplot for enriched ontology terms.", fig.width=10, fig.height=9, echo=FALSE, eval=TRUE, fig.align="center",out.width="95%"}
 library(png)

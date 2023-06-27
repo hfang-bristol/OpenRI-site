@@ -359,7 +359,7 @@ sub OpenRI_modal_cid {
 				$cid_data->{PMID}=30050107;
 			}
 			if($cid_data->{label}=~/CEDAR_microarray_/){
-				$cid_data->{PMID}=30449622;
+				$cid_data->{PMID}=29930244;
 			}
 			if($cid_data->{label}=~/eQTLGen/){
 				$cid_data->{PMID}=34475573;

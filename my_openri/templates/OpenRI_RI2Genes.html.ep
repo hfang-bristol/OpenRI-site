@@ -87,8 +87,24 @@ $crosslink_order->{'PCHiC_PMID31367015'}=$i++;
 $crosslink_order->{'PCHiC_PMID27863249'}=$i++;
 $crosslink_order->{'PCHiC_PMID31501517'}=$i++;
 $crosslink_order->{'PCHiC'}=$i++;
-$crosslink_order->{'QTL_eQTLCatalogue_GTEx'}=$i++;
-$crosslink_order->{'QTL_eQTLCatalogue_Others'}=$i++;
+
+#$crosslink_order->{'QTL_eQTLCatalogue_GTEx'}=$i++;
+#	QTL_eQTLCatalogue_GTEx => "GTEx eQTL from eQTLCatalogue (n=49 contexts; PMID34493866)",
+#$crosslink_order->{'QTL_eQTLCatalogue_Others'}=$i++;
+#	QTL_eQTLCatalogue_Others => "Other eQTL from eQTLCatalogue (n=63 contexts; PMID34493866)",
+
+$crosslink_order->{'QTL_eQTLCatalogue_PMID30449622'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID29930244'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID27768888'}=$i++;
+
+$crosslink_order->{'QTL_eQTLCatalogue_PMID24604202'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID25436857'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID29379200'}=$i++;
+
+$crosslink_order->{'QTL_eQTLCatalogue_PMID23755361'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID27768889'}=$i++;
+$crosslink_order->{'QTL_eQTLCatalogue_PMID27863251'}=$i++;
+
 $crosslink_order->{'QTL_eQTLGen_PMID32913098'}=$i++;
 $crosslink_order->{'QTL_pQTL_PMID34857953'}=$i++;
 
@@ -103,10 +119,21 @@ my $crosslinks={
 	PCHiC_PMID31501517 => "PCHiC for ENCODE cell types (n=28 contexts; PMID31501517)",
 	PCHiC => "PCHiC (n=49 contexts; all above)",
 	
-	QTL_eQTLCatalogue_GTEx => "GTEx eQTL from eQTLCatalogue (n=49 contexts; PMID34493866)",
-	QTL_eQTLCatalogue_Others => "Other eQTL from eQTLCatalogue (n=63 contexts; PMID34493866)",
+	QTL_eQTLCatalogue_PMID30449622 => "Immune-related eQTL from eQTLCatalogue (n=15 contexts; PMID30449622)",
+	QTL_eQTLCatalogue_PMID29930244 => "Immune-related eQTL from eQTLCatalogue (n=9 contexts; PMID29930244)",
+	QTL_eQTLCatalogue_PMID27768888 => "Monocyte-related eQTL from eQTLCatalogue (n=5 contexts; PMID27768888)",
+	
+	QTL_eQTLCatalogue_PMID24604202 => "Monocyte-related eQTL from eQTLCatalogue (n=4 contexts; PMID24604202)",
+	QTL_eQTLCatalogue_PMID25436857 => "TwinsUK eQTL from eQTLCatalogue (n=4 contexts; PMID25436857)",
+	QTL_eQTLCatalogue_PMID29379200 => "Macrophage-related eQTL from eQTLCatalogue (n=4 contexts; PMID29379200)",
+	
+	QTL_eQTLCatalogue_PMID23755361 => "GENCORD eQTL from eQTLCatalogue (n=3 contexts; PMID23755361)",
+	QTL_eQTLCatalogue_PMID27768889 => "Macrophage-related eQTL from eQTLCatalogue (n=3 contexts; PMID27768889)",
+	QTL_eQTLCatalogue_PMID27863251 => "BLUEPRINT eQTL from eQTLCatalogue (n=3 contexts; PMID27863251)",
+	
 	QTL_eQTLGen_PMID32913098 => "Blood eQTL from eQTLGen (n=1 context; PMID32913098)",
 	QTL_pQTL_PMID34857953 => "Plasma pQTL (n=1 context; PMID34857953)",
+	
 };
 
 my $example_regions='
@@ -584,7 +611,7 @@ chr6:163651419-163653419
 							% }elsif ($crosslink eq 'PCHiC_PMID31367015'){
 								<OPTGROUP LABEL="PCHiC: Promoter Capture Hi-C (physical interactions with gene promoters)">
 								<OPTION VALUE="<%= $crosslink %>"<%= $selected %>><%== $crosslinks->{$crosslink} %></OPTION>
-							% }elsif ($crosslink eq 'QTL_eQTLCatalogue_GTEx'){
+							% }elsif ($crosslink eq 'QTL_eQTLCatalogue_PMID30449622'){
 								</OPTGROUP>
 								<OPTGROUP LABEL="QTL: Quantitative Trait Locus (eQTL for gene expression or pQTL for protein abundance)">
 								<OPTION VALUE="<%= $crosslink %>"<%= $selected %>><%== $crosslinks->{$crosslink} %></OPTION>
