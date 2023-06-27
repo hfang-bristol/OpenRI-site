@@ -23,7 +23,7 @@
 		tbody > tr > td {
 			font-size: 13px;
 			text-align: left;
-			border: 1px solid #ccc;
+			border: 1px solid rgba(204,204,204,0.2);
 		}
 		tbody > tr > td:first-child {
 			text-align: center;
@@ -34,7 +34,7 @@
 			border: 1px solid rgba(204,204,204,0.2);
 		}
 		tbody > tr > td:nth-last-child(1) {
-			text-align: center;
+			text-align: left;
 			border: 1px solid rgba(204,204,204,0.2);
 		}
 		
@@ -334,6 +334,78 @@
 				});
 			% }
 			
+			/////////////////////////////////////////
+			% if($rec_anno_term ne ''){
+				// menu4_table
+				var table1 = $('#menu4_table').DataTable({
+					"aaData": <%== $rec_anno_term %>,
+					"deferRender": true,
+					"lengthMenu": [[5,10,50,-1], [5,10,50,"All"]],
+					"aoColumns": [
+						{
+							mData:"gene",
+							bSearchable: false,
+							asSorting: false,
+							sDefaultContent: "",
+							sWidth: "10%",
+							mRender: function ( data, type, full ) {
+								return '<strong>' + data + '</strong>';
+							}
+						},					
+						{
+							mData:"ontology",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<strong>' + data + '</strong>';
+							}
+						},
+						{
+							mData:"termid",
+							bSearchable: true,
+							sWidth: "10%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+						{
+							mData:"name",
+							bSearchable: true,
+							sWidth: "60%",
+							mRender: function(data, type, full) {
+								return '<span style="color:black">'+data+'</span>';
+							}
+						},
+					],
+					// Hidden columns
+					"columnDefs": [
+						{
+							"targets": [0],
+							"sortable": false,
+						},
+					],
+					"order": [[2,"desc"], [1,"asc"]],
+					dom: 'Brtlp',
+					buttons: [
+						'copy',
+						'excel',
+						'pdf',
+					],
+
+				});
+				// javascript for menu4_table
+				$('[id^=menu4_table] thead tr th').addClass('rotate');
+				$('[id^=menu4_table] tbody').on('mouseover', 'td', function(){
+					$(this).closest('tr').css("background-color", "rgba(249,178,51,0.2)");
+				});
+				$('[id^=menu4_table] tbody').on('mouseout', 'tr', function(){
+					$(this).css("background-color", "transparent");
+				});
+				$('#mysearch4').on('keyup', function() {
+					table1.search(this.value).draw();
+				});
+			% }
+			
 		});
 	</script>
 % end
@@ -388,7 +460,7 @@
 	
 	
 	<!-- tables -->
-	% if($rec_anno_abc ne '' || $rec_anno_pchic ne '' || $rec_anno_qtl ne ''){
+	% if($rec_anno_abc ne '' || $rec_anno_pchic ne '' || $rec_anno_qtl ne '' || $rec_anno_term ne ''){
 	<div class="panel-group" id="accordion">
 	
 	   % if($rec_anno_abc ne ''){
@@ -507,6 +579,46 @@
 							<th><div>Modal</div></th>
 							<th><div>Name</div></th>
 							<th><div>GR</div></th>
+						</tr>
+						
+					</thead>
+		
+				</table>
+			 </div>
+		  </div>
+	   </div>
+	   % }
+	   
+	   % if($rec_anno_term ne ''){
+	   <!-- panel 4 -->
+	   <div class="panel panel-default" id="panel4">
+		  <div class="panel-heading">
+			 <h4 class="panel-title" id="bookmark4">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details ontology annotations">Ontology annotations (Terms)</strong></a>
+				</a>
+			 </h4>
+		  </div>
+		  <div id="collapse4" class="panel-collapse collapse">
+			 <div class = "panel-body">
+				<form role="form" id="filter-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Please enter a keyword searching for terms (eg signaling)" id="mysearch4">
+					</div>
+				</form>
+				
+				<table id="menu4_table" class="compact nowrap" cellpadding="5px" cellspacing="0" width="100%">
+					<thead>
+
+						<tr>
+							<th rowspan="2"></th>
+							<th colspan="3" class="my_style">Ontology annotations</th>
+						</tr>
+					
+						<tr>
+							<th><div>Ontology</div></th>
+							<th><div>TermID</div></th>
+							<th><div>Name</div></th>
 						</tr>
 						
 					</thead>

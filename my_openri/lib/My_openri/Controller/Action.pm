@@ -171,7 +171,6 @@ sub OpenRI_gene {
 			$gene_data="";
 		}
 		$sth->finish();
-		
 	}
 	$c->stash(gene_data => $gene_data);
 	
@@ -256,6 +255,31 @@ sub OpenRI_gene {
 	}
 	$sth->finish();
 	$c->stash(rec_anno_qtl => $json);
+
+
+	################
+	# term
+	################
+	#SELECT a.Gene, a.Ontology, a.TermID, a.Name FROM gene_term as a WHERE a.Gene="LOXL4" ORDER BY a.Ontology ASC, a.Name ASC LIMIT 10;
+	$sth = $dbh->prepare('SELECT a.Ontology, a.TermID, a.Name FROM gene_term as a WHERE a.Gene=? ORDER BY a.Ontology ASC, a.Name ASC;');
+	$sth->execute($gene);
+	$json = "";
+	if($sth->rows > 0){
+		my @data;
+		while (my @row = $sth->fetchrow_array) {
+			my $rec;
+			$rec->{gene}=$gene;
+			$rec->{ontology}=$row[0];
+			$rec->{termid}=$row[1];
+			$rec->{name}=$row[2];
+			
+			push @data,$rec;
+		}
+		print STDERR scalar(@data)."\n";
+		$json = encode_json(\@data);
+	}
+	$sth->finish();
+	$c->stash(rec_anno_term => $json);
 
 	My_openri::Controller::Utils::DBDisconnect($dbh);
 	
