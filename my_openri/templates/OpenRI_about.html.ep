@@ -47,33 +47,32 @@
 			 <div class = "panel-body">
 				
 				<fieldset>
-				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;OpenRI is an open and scalable resource for gene-directed regulatory interactions. It enables interactive exploration of multimodal regulatory interactions, organised into three modals: Activity-By-Contact (ABC) for enhancer-gene maps, Promoter Capture Hi-C (PCHiC), and Quantitative Trait Loci (QTL). OpenRI also provides users with data-mining opportunities inclusive of non-coding genome, including: 
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;OpenRI is an open and scalable resource for gene-directed regulatory interactions. Its web-server enables interactive exploration of multimodal regulatory interactions that are currently categorised into three modalities: Activity-By-Contact (ABC) for enhancer-gene maps, Promoter Capture Hi-C (PCHiC), and Quantitative Trait Loci (QTL). OpenRI offers data-mining capabilities that are inclusive of the non-coding genome, including the following: 
 				<ul>
-				<li><a href="/OpenRI" target="search"><i class="fa fa-search fa-1x"></i>&nbsp;Search</a>, an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages; 
-				<li><a href="/OpenRI/browser" target="browser"><i class="fa fa-safari fa-1x fa-flip-horizontal"></i>&nbsp;Browse</a>, navigating contexts (eg organs, tissues, and cell types) to enable interactive exploration of their regulatory interactions;
-				<li><a href="/OpenRI/RI2Genes" target="RI2Genes"><i class="fa fa-tachometer fa-1x fa-flip-horizontal"></i>&nbsp;RI2Genes</a>, mining the resource to identify regulatory genes from user-input data.
-				<li><a href="/OpenRI/RI2Terms" target="RI2Terms"><i class="fa fa-tachometer fa-1x"></i>&nbsp;RI2Terms</a>, mining the resource to identify regulatory genes and ontology terms from user-input data.
+				<li><a href="/OpenRI" target="search"><i class="fa fa-search fa-1x"></i>&nbsp;Search</a>: Users can input keywords to explore the resource, which returns context-specific pages and gene-specific pages related to the query.
+				<li><a href="/OpenRI/browser" target="browser"><i class="fa fa-safari fa-1x fa-flip-horizontal"></i>&nbsp;Browse</a>: Users can navigate through varied contexts such as organs, tissues, and cell types to interactively explore their respective regulatory interactions.
+				<li><a href="/OpenRI/RI2Genes" target="RI2Genes"><i class="fa fa-tachometer fa-1x fa-flip-horizontal"></i>&nbsp;RI2Genes</a>: This capability enables users to identify candidate regulatory genes from their input data by mining the resource.
+				<li><a href="/OpenRI/RI2Terms" target="RI2Terms"><i class="fa fa-tachometer fa-1x"></i>&nbsp;RI2Terms</a>; This capability allows users to identify candidate regulatory genes as well as enriched ontology terms from their input data by leveraging the resource.
 				</ul>
-				Looking further ahead, we are keen on providing outputs in a ChatGPT-style conversational manner.
 				</h5>
 				</fieldset>
 				
 				<br>
 				
 				<fieldset>
-				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please refer to <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource.</h5>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Please consult <a href="/OpenRI/manual" target="manual"><i class="fa fa-book fa-1x fa-flip-horizontal"></i>&nbsp;User Manual</a> giving step-by-step instructions on how to use the OpenRI resource effectively. Looking ahead, we are keen on our plans to provide outputs in a conversational manner similar to ChatGPT, enhancing the user experience in an interactive and intuitive manner.</h5>
 				</fieldset>
 				
 				<br>
 				
 				<fieldset>
-				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;For instructions on how to build its web-server, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a>.</h5>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;If you are interested in learning how to set up the web-server associated with OpenRI, please refer to <a href="https://github.com/hfang-bristol/OpenRI-site" target="github"><i class="fa fa-github fa-1x"></i>&nbsp;Source Code</a> for guidance.</h5>
 				</fieldset>
 				
 				<br>
 				
 				<fieldset>
-				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;This work receives fundings from National Natural Science Foundation of China [32170663], Shanghai Pujiang Program [21PJ1409600], Program for Professor of Special Appointment (Eastern Scholar) at Shanghai Institutions of Higher Learning, and Innovative Research Team of High-Level Local Universities in Shanghai.</h5>
+				<h5 class="about_title"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;This work has received fundings from various sources: National Natural Science Foundation of China [32170663], Shanghai Pujiang Program [21PJ1409600], Program for Professor of Special Appointment (Eastern Scholar) at Shanghai Institutions of Higher Learning, and Innovative Research Team of High-Level Local Universities in Shanghai.</h5>
 				</fieldset>
 				
 				<br>
@@ -143,7 +142,7 @@ mysql> <span class="burgundy_text">SHOW</span> tables;
     </pre>
 	
 	<hr>
-    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Extract genomic regions that interact with the gene 'IL17A' (based on the modal 'PCHiC')</span>
+    <span class="sandy_text"><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Extract genomic regions that interact with the gene 'IL17A' (based on the modality 'PCHiC')</span>
     <pre class="citation_title">
 mysql> <span class="burgundy_text">SELECT</span> a.CID, b.label, a.GR, a.Gene, a.Score 
 <span class="burgundy_text">FROM</span> regulatory_interaction AS a, context_info AS b 
@@ -226,7 +225,7 @@ mysql> <span class="burgundy_text">DESC</span> context_info;
     <font size=3>
     <ul>
      <li> The <span style="text-decoration: underline;">CID</span> column is the context ID</li>
-     <li> The <span style="text-decoration: underline;">Modal</span> column is the modal for regulatory interactions</li>
+     <li> The <span style="text-decoration: underline;">Modal</span> column is the modality for regulatory interactions</li>
      <li> The <span style="text-decoration: underline;">Context</span> column is the name of contexts</li>
      <li> The <span style="text-decoration: underline;">num_ri</span> column is the number of regulatory interactions</li>
      <li> The <span style="text-decoration: underline;">num_gene</span> column is the number of genes</li>
@@ -389,7 +388,7 @@ mysql> <span class="burgundy_text">DESC</span> gene_info;
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark4">
 				<a id="barplot-button" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Publications for primary datasets curated into the OpenRI database">&nbsp;&nbsp;PRIMARY ARTICLES</strong></a>
+				   <i class="fa fa-plus-circle"></i><strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Publications for primary datasets curated into the OpenRI database">&nbsp;&nbsp;RESEARCH ARTICLES</strong></a>
 				</a>
 			 </h4>
 		  </div>

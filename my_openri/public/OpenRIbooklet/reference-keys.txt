@@ -10,9 +10,9 @@ fig:RI2Terms-interface
 fig:RI2Terms-results-terms
 fig:RI2Terms-results-plots
 index
-needs
-contents
-mining
+unmet-needs
+data-resource
+data-mining
 web-server
 frontpage
 mobile

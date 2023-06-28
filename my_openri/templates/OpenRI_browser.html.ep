@@ -300,11 +300,11 @@
 	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title" id="bookmark_general"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;<strong>List of contexts for regulatory interactions with different modals</strong></h3>
+			<h3 class="panel-title" id="bookmark_general"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;<strong>List of contexts for regulatory interactions with different modalities</strong></h3>
 		</div>
 		<div class = "panel-body">
 		
-			<h5><div class="btn btn-default btn-sm disabled">AS OF <strong><%== $realtime_data->{Date} %></strong></div><span class="sandy_text">&nbsp;&nbsp;<i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;including <strong><%== $realtime_data->{CID} %></strong> contexts organised into <strong><%== $realtime_data->{Modal} %></strong> modals (totaling <strong><%== $realtime_data->{RI} %></strong> regulatory interactions):</span></h5>
+			<h5><div class="btn btn-default btn-sm disabled">AS OF <strong><%== $realtime_data->{Date} %></strong></div><span class="sandy_text">&nbsp;&nbsp;<i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;including <strong><%== $realtime_data->{CID} %></strong> contexts organised into <strong><%== $realtime_data->{Modal} %></strong> modalities (totaling <strong><%== $realtime_data->{RI} %></strong> regulatory interactions):</span></h5>
 				
 			<hr>
 		
@@ -317,7 +317,7 @@
 				<thead>
 					<tr>
 						<th>CID</th>
-						<th>Modal</th>
+						<th>Modality</th>
 						<th>Name</th>
 						<th># Regulatory<br>interactions</th>
 						<th># Genes</th>
@@ -334,7 +334,7 @@
 				<thead>
 					<tr>
 						<th>CID</th>
-						<th>Modal</th>
+						<th>Modality</th>
 						<th>Name</th>
 						<th># Regulatory<br>interactions</th>
 						<th># Genes</th>
@@ -351,7 +351,7 @@
 				<thead>
 					<tr>
 						<th>CID</th>
-						<th>Modal</th>
+						<th>Modality</th>
 						<th>Name</th>
 						<th># Regulatory<br>interactions</th>
 						<th># Genes</th>

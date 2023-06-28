@@ -60,14 +60,14 @@ my $post_flag='';
 my $info='
 <h5>Input</h5>
 <ul>
-<li>(<b>Steps 1 and 2</b>; <a href="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt" download="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt" target="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt"><i class="fa fa-cloud-download fa" aria-hidden="true"></i>&nbspExample Input</a>): provide a list of user-input genomic regions (<b>Step 1</b>) and specify the reference genome build (<b>Step 2</b>). Please make sure that the input genomic coordinates are consistent with the specified genome build.
-<li>(<b>Step 3</b>): Specify contexts under one of modals (ABC, PCHiC, and QTL) to identify regulatory genes.
-<li>(<b>Step 4</b>): Specify the top regulatory genes to identify ontology terms based on which ontology.
+<li>(<b>Steps 1 and 2</b>; <a href="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt" download="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt" target="/app/examples/eg_RI2Terms_PMID35751107TableS2.txt"><i class="fa fa-cloud-download fa" aria-hidden="true"></i>&nbspExample Input</a>): Enter a list of user-input genomic regions (<b>Step 1</b>) and specify the reference genome build (<b>Step 2</b>). Ensure that the input genomic coordinates are consistent with the specified genome build.
+<li>(<b>Step 3</b>): Specify contexts under one of modalities (ABC, PCHiC, QTL) to identify regulatory genes.
+<li>(<b>Step 4</b>): Specify the top regulatory genes and select the ontology to identify enriched ontology terms.
 </ul>
 
 <h5>Output</h5>
 <ul>
-<li>(<a href="/app/examples/_tmp_RMD_RI2Terms.html" download="/app/examples/_tmp_RMD_RI2Terms.html" target="/app/examples/_tmp_RMD_RI2Terms.html"><i class="fa fa-cloud-download fa" aria-hidden="true"></i>&nbspExample Output</a>) includes interactive tables and high-quality figures for results. A summary of the input data and the runtime (computed on the server side) is also returned.
+<li>(<a href="/app/examples/_tmp_RMD_RI2Terms.html" download="/app/examples/_tmp_RMD_RI2Terms.html" target="/app/examples/_tmp_RMD_RI2Terms.html"><i class="fa fa-cloud-download fa" aria-hidden="true"></i>&nbspExample Output</a>) includes interactive tables and high-quality figures presenting the results. A summary of the input data and the runtime (computed on the server side) is also provided.
 </ul>
 
 <h5>Other information</h5>
@@ -616,9 +616,9 @@ chr6:163651419-163653419
 					</div>
 				</div>
 				
-				<p><strong>Step 3</strong>: Regulatory genes identified based on which modal (ABC, PCHiC, QTL).</p>
+				<p><strong>Step 3</strong>: Regulatory genes identified based on which modality (ABC, PCHiC, QTL).</p>
 				<div class="form-group">
-					<label class="control-label col-sm-5" for="distance">Modal:</label>
+					<label class="control-label col-sm-5" for="distance">Modality:</label>
 					<div class="col-sm-7">
 						<select name="crosslink" id="crosslink" class="form-control">
 							% foreach my $crosslink (sort{$crosslink_order->{$a} <=> $crosslink_order->{$b}} keys %$crosslink_order) {

@@ -469,7 +469,7 @@
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark1">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'ABC'">Regulatory interactions (ABC)</strong></a>
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modality 'ABC'">Regulatory interactions (ABC)</strong></a>
 				</a>
 			 </h4>
 		  </div>
@@ -492,7 +492,7 @@
 					
 						<tr>
 							<th><div>CID</div></th>
-							<th><div>Modal</div></th>
+							<th><div>Modality</div></th>
 							<th><div>Name</div></th>
 							<th><div>GR</div></th>
 						</tr>
@@ -511,7 +511,7 @@
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark2">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'PCHiC'">Regulatory interactions (PCHiC)</strong></a>
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modality 'PCHiC'">Regulatory interactions (PCHiC)</strong></a>
 				</a>
 			 </h4>
 		  </div>
@@ -534,7 +534,7 @@
 					
 						<tr>
 							<th><div>CID</div></th>
-							<th><div>Modal</div></th>
+							<th><div>Modality</div></th>
 							<th><div>Name</div></th>
 							<th><div>GR</div></th>
 						</tr>
@@ -553,7 +553,7 @@
 		  <div class="panel-heading">
 			 <h4 class="panel-title" id="bookmark3">
 				<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modal 'QTL'">Regulatory interactions (QTL)</strong></a>
+				   <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;<strong class ="my-tooltip" data-toggle="tooltip" data-placement="auto right" title="Click me to show/hide this tab that details regulatory interactions based on the modality 'QTL'">Regulatory interactions (QTL)</strong></a>
 				</a>
 			 </h4>
 		  </div>
@@ -576,7 +576,7 @@
 					
 						<tr>
 							<th><div>CID</div></th>
-							<th><div>Modal</div></th>
+							<th><div>Modality</div></th>
 							<th><div>Name</div></th>
 							<th><div>GR</div></th>
 						</tr>

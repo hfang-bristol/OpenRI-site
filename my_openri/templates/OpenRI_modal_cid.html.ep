@@ -192,7 +192,7 @@
 				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Name</dt>
 				<dd><%== $cid_data->{label} %></dd>
 				
-				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Modal</dt>
+				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Modality</dt>
 				<dd><%== $cid_data->{Modal_info} %></dd>
 				
 				<dt><i class="fa fa-minus fa-1x"></i>&nbsp;&nbsp;Primary source</dt>

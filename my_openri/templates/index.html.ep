@@ -79,7 +79,7 @@
 			  	source: abc,
 			  	limit: 4,
 			  	templates: {
-					header: '<div class="header-name">Contexts (ABC  modal):</div>',
+					header: '<div class="header-name">Contexts (ABC  modality):</div>',
 					suggestion: function(data) {
 							return ['<a href="/OpenRI/abc/' + data.cid + '" class="btn btn-default btn-sm text-left">',
 							'<i class="fa fa-copyright fa-1x"></i>&nbsp;&nbsp;' + data.cid + ': ' + data.label.split(" ").slice(0,5).join(" ") + ' ...</a>',
@@ -92,7 +92,7 @@
 			  	source: pchic,
 			  	limit: 4,
 			  	templates: {
-					header: '<div class="header-name">Contexts (PCHiC  modal):</div>',
+					header: '<div class="header-name">Contexts (PCHiC  modality):</div>',
 					suggestion: function(data) {
 							return ['<a href="/OpenRI/pchic/' + data.cid + '" class="btn btn-default btn-sm text-left">',
 							'<i class="fa fa-copyright fa-1x"></i>&nbsp;&nbsp;' + data.cid + ': ' + data.label.split(" ").slice(0,5).join(" ") + ' ...</a>',
@@ -105,7 +105,7 @@
 			  	source: qtl,
 			  	limit: 4,
 			  	templates: {
-					header: '<div class="header-name">Contexts (QTL  modal):</div>',
+					header: '<div class="header-name">Contexts (QTL  modality):</div>',
 					suggestion: function(data) {
 							return ['<a href="/OpenRI/qtl/' + data.cid + '" class="btn btn-default btn-sm text-left">',
 							'<i class="fa fa-copyright fa-1x"></i>&nbsp;&nbsp;' + data.cid + ': ' + data.label.split(" ").slice(0,5).join(" ") + ' ...</a>',
@@ -141,10 +141,16 @@
         </div>
     	
     	<div class="text-center">
-        	<h1 style="color:#000; font-weight:bold; font-size:22px; margin:2px;">An open and scalable resource for gene-directed regulatory interactions
+        	<h1 style="color:#000; font-weight:bold; font-size:22px; margin:2px;">An Open and Scalable Resource for Gene-Directed Regulatory Interactions
 			</h1>
 			
-			<div class="help-block" style="font-size:15px; margin:6px;">(<a href="/OpenRI/browser">AS OF <strong><%== $realtime_data->{Date} %></strong></a>: manual curation of <strong><%== $realtime_data->{RI} %></strong> regulatory interactions with <strong><%== $realtime_data->{Modal} %></strong> modals across <strong><%== $realtime_data->{CID} %></strong> contexts)</div>
+			<div class="help-block" style="font-size:15px; margin:6px;">(<a href="/OpenRI/browser">AS OF <strong><%== $realtime_data->{Date} %></strong></a>: Manual curation of <strong><%== $realtime_data->{RI} %></strong> regulatory interactions with <strong><%== $realtime_data->{Modal} %></strong> modalities across <strong><%== $realtime_data->{CID} %></strong> contexts)</div>
+			
+			<span class="truncated">
+            <br>
+			The resource is designed to be open and scalable, serving as a valuable platform for investigating gene-directed regulatory interactions. It features a vast collection of regulatory interactions and a number of data-mining capabilities.
+			<br>
+            </span>
 			
         </div>
     </div>
@@ -175,6 +181,11 @@
                 <div class="panel-body">
                 	<!-- width=280 height=250 margin=10 -->
                 	<p class="help-block" style="font-size:16px; margin:0;">Providing <a href="javascript:newWin('/OpenRI/about', 'OpenRI_about', '909', '1169')"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;<strong>information</strong></a> on the database, web-server and their use</p>
+                	<span class="truncated">
+                		<br>
+						This resource offers a comprehensive database and web-server for exploring gene-directed regulatory interactions. It provides information on the database, web-server, and instructions on how to utilise them effectively.
+						<br>
+                	</span>
                 </div>
             </div>
         </div>
@@ -185,7 +196,12 @@
             		<h4><div class="btn btn-primary btn-block disabled">&nbsp;&nbsp;&nbsp;BROWSING RESOURCE</div></h4>
                 </div>
                 <div class="panel-body">
-                	<p class="help-block" style="font-size:16px; margin:0;">Navigating <a href="/OpenRI/browser"><i class="fa fa-safari fa-flip-horizontal" aria-hidden="true"></i>&nbsp;<strong>contexts</strong></a> to fetch their regulatory interactions</p>
+                	<p class="help-block" style="font-size:16px; margin:0;">Navigating through <a href="/OpenRI/browser"><i class="fa fa-safari fa-flip-horizontal" aria-hidden="true"></i>&nbsp;<strong>contexts</strong></a> to fetch their regulatory interactions</p>
+                	<span class="truncated">
+                		<br>
+						Users can navigate through different contexts to access specific regulatory interactions. This feature allows for interactive exploration of regulatory interactions based on specific contexts such as organs, tissues, and cell types.
+						<br>
+                	</span>
                 </div>
             </div>
         </div>
@@ -197,6 +213,11 @@
                 </div>
                 <div class="panel-body">
 					<p class="help-block" style="font-size:16px; margin:0;">Identifying <a href="/OpenRI/RI2Genes"><i class="fa fa-tachometer fa-flip-horizontal" aria-hidden="true"></i>&nbsp;<strong>genes</strong></a> and <a href="/OpenRI/RI2Terms"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;<strong>terms</strong></a> from user-input data</p>
+                	<span class="truncated">
+                		<br>
+						Users can input their data and identify candidate regulatory genes and enriched ontology terms to gain deeper insights into regulatory mechanisms of their own data.
+						<br>
+                	</span>
                 </div>
             </div>
         </div>

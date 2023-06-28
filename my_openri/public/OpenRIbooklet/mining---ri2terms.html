@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-06-27" />
+<meta name="date" content="2023-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -77,9 +77,9 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#needs"><i class="fa fa-check"></i><b>1.1</b> Needs</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>1.2</b> Contents</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#mining"><i class="fa fa-check"></i><b>1.3</b> Mining</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#unmet-needs"><i class="fa fa-check"></i><b>1.1</b> Unmet Needs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-resource"><i class="fa fa-check"></i><b>1.2</b> Data Resource</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-mining"><i class="fa fa-check"></i><b>1.3</b> Data Mining</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="web-server.html"><a href="web-server.html"><i class="fa fa-check"></i><b>2</b> Web-server</a>
 <ul>
@@ -126,46 +126,47 @@
 <p><strong>Input</strong></p>
 </blockquote>
 <ul>
-<li><p><code>Step 1</code> and <code>Step 2</code>: Enter a list of user-input genomic regions, and specify the reference genome build. Please make sure that the input genomic coordinates (<code>Step 1</code>) are consistent with the specified genome build (<code>Step 2</code>).</p></li>
-<li><p><code>Step 3</code>: Select from a list of contexts under different modals (PCHiC, ABC, and QTL).</p></li>
+<li><p><code>Step 1</code>: Enter a list of user-input genomic regions.</p></li>
+<li><p><code>Step 2</code>: Specify the reference genome build. Ensure that the input genomic coordinates (<code>Step 1</code>) are consistent with the specified genome build (<code>Step 2</code>).</p></li>
+<li><p><code>Step 3</code>: Select from a list of contexts available under different modalities (ABC, PCHiC, and QTL).</p></li>
 <li><p><code>Step 4</code>: Specify the top regulatory genes and select from a list of ontologies to identify enriched ontology terms.</p></li>
 </ul>
 <blockquote>
 <p><strong>Output</strong></p>
 </blockquote>
 <ul>
-<li><a href="/app/examples/_tmp_RMD_RI2Terms.html">Example Output</a> includes interactive tables for regulatory genes (and evidence) and ontology terms, as well as graphical plots for enriched terms. A summary of input data and the runtime (computed on the server side) is also returned to the users.</li>
+<li><a href="/app/examples/_tmp_RMD_RI2Terms.html">Example Output</a> includes interactive tables presenting regulatory genes (with evidence) and ontology terms, along with graphical plots for the enriched ontology terms. Additionally, a summary of the input data and the runtime (computed on the server side) is provided to users.</li>
 </ul>
 <hr>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-interface"></span>
-<img src="index_files/figure-html/RI2Terms-interface-1.png" alt="The RI2Terms interface." width="90%" />
+<img src="index_files/figure-html/RI2Terms-interface-1.png" alt="The RI2Terms interface is displayed." width="90%" />
 <p class="caption">
-FIGURE 6.1: The RI2Terms interface.
+FIGURE 6.1: The RI2Terms interface is displayed.
 </p>
 </div>
 </div>
 <div id="interactive-results-1" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Interactive Results<a href="mining---ri2terms.html#interactive-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Under the tab <code>Input Information</code>, <code>Interactive table</code> lists user-input genomic regions.</p></li>
-<li><p>Under the tab <code>Output: Regulatory Genes</code>, <code>Regulatory Gene table</code> lists regulatory genes that are also hyperlinked to <code>gene-specific information page</code>, while <code>Evidence table</code> displays information about how to define regulatory genes, that is, using which contexts and which regulatory interactions.</p></li>
-<li><p>Under the tab <code>Output: Ontology Terms</code>, <code>Ontology Term table</code> displays enriched ontology terms.</p></li>
+<li><p>Under the <code>Input Information</code> tab, <code>Interactive table</code> lists the user-input genomic regions.</p></li>
+<li><p>Under the <code>Output: Regulatory Genes</code> tab, <code>Regulatory Gene table</code> lists regulatory genes, each hyperlinked to its <code>gene-specific information page</code>. <code>Evidence table</code> provides details on how regulatory genes are defined, including the contexts and regulatory interactions involved.</p></li>
+<li><p>Under the <code>Output: Ontology Terms</code> tab, <code>Ontology Term table</code> presents the enriched ontology terms.</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-results-terms"></span>
-<img src="index_files/figure-html/RI2Terms-results-terms-1.png" alt="Ontology Term table lists enriched ontology terms under the tab `Output: Ontology Terms`." width="95%" />
+<img src="index_files/figure-html/RI2Terms-results-terms-1.png" alt="`Ontology Term table` within the `Output: Ontology Terms` tab displays the list of the enriched ontology terms." width="95%" />
 <p class="caption">
-FIGURE 6.2: Ontology Term table lists enriched ontology terms under the tab <code>Output: Ontology Terms</code>.
+FIGURE 6.2: <code>Ontology Term table</code> within the <code>Output: Ontology Terms</code> tab displays the list of the enriched ontology terms.
 </p>
 </div>
 <br>
 <hr>
 <ul>
-<li>Under the tab <code>Output: Plots</code>, two output plots <code>Dotplot</code> and <code>Forest plot</code> illustrate enriched ontology terms. Also provided are the downloadable PDF files.</li>
+<li>Under the <code>Output: Plots</code> tab, two output plots, namely <code>Dotplot</code> and <code>Forest plot</code>, visually illustrate the enriched ontology terms. Additionally, downloadable PDF files are provided.</li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:RI2Terms-results-plots"></span>
-<img src="index_files/figure-html/RI2Terms-results-plots-1.png" alt="Dotplot for enriched ontology terms." width="95%" />
+<img src="index_files/figure-html/RI2Terms-results-plots-1.png" alt="The figure showcases the Dotplot presenting the enriched ontology terms." width="95%" />
 <p class="caption">
-FIGURE 6.3: Dotplot for enriched ontology terms.
+FIGURE 6.3: The figure showcases the Dotplot presenting the enriched ontology terms.
 </p>
 </div>
 

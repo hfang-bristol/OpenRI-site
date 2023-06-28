@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-06-27" />
+<meta name="date" content="2023-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -77,9 +77,9 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#needs"><i class="fa fa-check"></i><b>1.1</b> Needs</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>1.2</b> Contents</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#mining"><i class="fa fa-check"></i><b>1.3</b> Mining</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#unmet-needs"><i class="fa fa-check"></i><b>1.1</b> Unmet Needs</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-resource"><i class="fa fa-check"></i><b>1.2</b> Data Resource</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-mining"><i class="fa fa-check"></i><b>1.3</b> Data Mining</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="web-server.html"><a href="web-server.html"><i class="fa fa-check"></i><b>2</b> Web-server</a>
 <ul>
@@ -120,7 +120,7 @@
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">OpenRI User Manual</h1>
-<p class="date"><em>2023-06-27</em></p>
+<p class="date"><em>2023-06-29</em></p>
 </div>
 <div id="index" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Section 1</span> Overview<a href="index.html#index" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -131,22 +131,22 @@ FIGURE 1.1: The logo for the OpenRI resource.
 </p>
 </div>
 <hr>
-<div id="needs" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Needs<a href="index.html#needs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Most available interactions are generated or curated between genes (or proteins), and regulatory interactions involving non-coding regions of the genome are less studied, both in terms of resources and utilities. The OpenRI resource addresses these needs, including manual curation of gene-directed regulatory interactions across a wide range of contexts (eg organs, tissues, and cell types), and supporting their use for data mining inclusive of non-coding genome.</p>
+<div id="unmet-needs" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Unmet Needs<a href="index.html#unmet-needs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most available interactions have focused on genes (or proteins), neglecting the study of regulatory interactions involving non-coding regions of the genome. As a result, there is a lack of dedicated resources and utilities in this area. The OpenRI resource addresses these needs by providing manual curation of gene-directed regulatory interactions across varied contexts, such as organs, tissues, and cell types. More importantly, its web-server supports data mining that encompasses the non-coding genome.</p>
 </div>
-<div id="contents" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Contents<a href="index.html#contents" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The OpenRI resource is designed to be open and scalable for gene-directed multimodal regulatory interactions. These interactions are currently organised into three modals: <code>Activity-By-Contact</code> (<a href="https://www.ncbi.nlm.nih.gov/pubmed/33828297">ABC</a>) for enhancer-gene maps, <code>Promoter Capture Hi-C</code> (<a href="https://www.ncbi.nlm.nih.gov/pubmed/31501517">PCHiC</a>), and <code>Quantitative Trait Loci</code> (<a href="https://www.ncbi.nlm.nih.gov/pubmed/34493866">QTL</a>).</p>
+<div id="data-resource" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data Resource<a href="index.html#data-resource" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The OpenRI resource is specially designed to be an open and scalable platform for investigating gene-directed multimodal regulatory interactions. Currently, these interactions are organised into three modalities: <code>Activity-By-Contact (ABC)</code> for enhancer-gene maps (see <a href="https://www.ncbi.nlm.nih.gov/pubmed/33828297">this</a>), <code>Promoter Capture Hi-C (PCHiC)</code> (see <a href="https://www.ncbi.nlm.nih.gov/pubmed/31501517">this</a>), and <code>Quantitative Trait Loci (QTL)</code> (see <a href="https://www.ncbi.nlm.nih.gov/pubmed/34493866">this</a>).</p>
 </div>
-<div id="mining" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Mining<a href="index.html#mining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In parallel with the growth in summary-level epi/genomic datasets generated from cohort-scale studies, OpenRI provides the users with web-based data-mining opportunities inclusive of non-coding genome, including:</p>
+<div id="data-mining" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Data Mining<a href="index.html#data-mining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In response to the growing availability of summary-level epi/genomic datasets from cohort-scale studies, OpenRI offers web-based data-mining capabilities that cover the non-coding genome. These capabilities include:</p>
 <ul>
-<li><p><a href="mining---search.html#mining---search">Mining - Search</a>, an entry point to mine the resource with the keyword in query returning context-specific pages and gene-specific pages;</p></li>
-<li><p><a href="mining---browse.html#mining---browse">Mining - Browse</a>, navigating contexts (eg organs, tissues, and cell types) to enable interactive exploration of their regulatory interactions;</p></li>
-<li><p><a href="mining---ri2genes.html#mining---ri2genes">Mining - RI2Genes</a>, mining the resource to identify potential regulatory genes (see <a href="/app/examples/_tmp_RMD_RI2Genes.html">Example Output</a>) from user-input data;</p></li>
-<li><p><a href="mining---ri2terms.html#mining---ri2terms">Mining - RI2Terms</a>, mining the resource to identify potential regulatory genes and enriched ontology terms (see <a href="/app/examples/_tmp_RMD_RI2Terms.html">Example Output</a>) from user-input data.</p></li>
+<li><p><a href="mining---search.html#mining---search">Mining - Search</a> allows users to enter keywords to query the resource, which returns context-specific pages and gene-specific pages related to the query.</p></li>
+<li><p><a href="mining---browse.html#mining---browse">Mining - Browse</a> allows users to navigate through different contexts such as organs, tissues, and cell types to interactively explore their regulatory interactions.</p></li>
+<li><p><a href="mining---ri2genes.html#mining---ri2genes">Mining - RI2Genes</a> allows users to mine the resource to identify potential regulatory genes from their input data (see <a href="/app/examples/_tmp_RMD_RI2Genes.html">Example Output</a>).</p></li>
+<li><p><a href="mining---ri2terms.html#mining---ri2terms">Mining - RI2Terms</a> allows users to mine the resource to identify potential regulatory genes and enriched ontology terms from their input data (see <a href="/app/examples/_tmp_RMD_RI2Terms.html">Example Output</a>).</p></li>
 </ul>
 </div>
 </div>

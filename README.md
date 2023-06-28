@@ -2,7 +2,7 @@
 
 ## @ Overview
 
-> The [OpenRI](http://www.openridb.com/OpenRI) web-server enables interactive exploration of multimodal regulatory interactions (e/pQTL, promoter capture Hi-C, and enhancer-gene maps) and their use for data mining inclusive of non-coding genome.
+> The [OpenRI](http://www.openridb.com/OpenRI) web-server enables interactive exploration of multimodal gene-directed regulatory interactions (ABC, PCHiC, QTL) and their use for data mining inclusive of the non-coding genome.
 
 > To learn how to use OpenRI, a user manual is made available [here](http://www.openridb.com:3080/OpenRIbooklet/index.html) with step-by-step instructions.
 
