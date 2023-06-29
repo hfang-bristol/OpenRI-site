@@ -48,7 +48,9 @@ Most available interactions have focused on genes (or proteins), neglecting the 
 
 ## Data Resource
 
-The OpenRI resource is specially designed to be an open and scalable platform for investigating gene-directed multimodal regulatory interactions. Currently, these interactions are organised into three modalities: `Activity-By-Contact (ABC)` for enhancer-gene maps (see [this](https://www.ncbi.nlm.nih.gov/pubmed/33828297)), `Promoter Capture Hi-C (PCHiC)` (see [this](https://www.ncbi.nlm.nih.gov/pubmed/31501517)), and `Quantitative Trait Loci (QTL)`  (see [this](https://www.ncbi.nlm.nih.gov/pubmed/34493866)).
+The OpenRI resource is specially designed to be an open and scalable platform for investigating gene-directed multimodal regulatory interactions. Currently, these interactions are organised into three modalities: `Activity-By-Contact (ABC)` for enhancer-gene maps (see [this](https://www.ncbi.nlm.nih.gov/pubmed/33828297)), `Promoter Capture Hi-C (PCHiC)` (see [this](https://www.ncbi.nlm.nih.gov/pubmed/31501517)), and `Quantitative Trait Loci (QTL)` (see [this](https://www.ncbi.nlm.nih.gov/pubmed/34493866)).
+
+Genes involved in regulatory interactions are annotated with a range of ontologies on `functions` ([Gene Ontology](https://www.ncbi.nlm.nih.gov/pubmed/33290552)), `phenotypes` ([Human Phenotype Ontology](https://www.ncbi.nlm.nih.gov/pubmed/33264411)), `diseases` ([Mondo Disease Ontology](https://www.ncbi.nlm.nih.gov/pubmed/31701156)), protein domains including `SCOP superfamily domains` ([SCOP](https://www.ncbi.nlm.nih.gov/pubmed/7723011)), `Pfam domains` ([Pfam](https://www.ncbi.nlm.nih.gov/pubmed/33125078)), and `InterPro domains` ([InterPro](https://www.ncbi.nlm.nih.gov/pubmed/33156333)). 
 
 
 ## Data Mining
